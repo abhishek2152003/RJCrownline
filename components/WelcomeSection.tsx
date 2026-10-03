@@ -47,7 +47,7 @@ export default function WelcomeSection() {
 
             <div className="space-y-6 text-charcoal text-lg leading-relaxed">
               <p className="about-reveal about-item-3">
-                <strong>Mr. John Doe </strong>
+                <strong>Mrs Jyoti Sangdore </strong>
                 is the founder of RJCROWNLINE. We offer premium
                 agri-commodities, dry fruits, and spices for export. We have a
                 robust, high-reach network with farmers in Maharashtra and all
