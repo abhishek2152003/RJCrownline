@@ -14,7 +14,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
-              <img src="/logo.svg" alt="RJCROWNLINE" className="h-50 w-auto" />
+              <img
+                src="/logo.svg"
+                alt="RJCROWNLINE"
+                className="w-40 sm:w-48 md:w-56 lg:w-72 h-auto object-contain"
+              />
             </Link>
           </div>
 

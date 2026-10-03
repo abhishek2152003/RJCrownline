@@ -43,23 +43,42 @@ const categories = [
 ];
 
 export default function ProductSection() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>(
+    new Array(categories.length).fill(false),
+  );
 
   useEffect(() => {
+    const cardRefs: HTMLAnchorElement[] = [];
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect(); // animate only once
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number((entry.target as HTMLElement).dataset.index);
+            setVisibleCards((prev) => {
+              if (prev[index]) return prev;
+              const next = [...prev];
+              next[index] = true;
+              return next;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      { threshold: 0.4 }, // trigger when 15% of section is visible
+      { threshold: 0.15, rootMargin: "0px 0px -50px 0px" },
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    const nodes =
+      sectionRef.current?.querySelectorAll<HTMLAnchorElement>(".product-card");
+    nodes?.forEach((node) => {
+      cardRefs.push(node);
+      observer.observe(node);
+    });
 
-    return () => observer.disconnect();
+    return () => {
+      cardRefs.forEach((n) => observer.unobserve(n));
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -85,124 +104,133 @@ export default function ProductSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {categories.map((category, idx) => (
-            <Link
-              href={category.link}
-              key={idx}
-              className={`
-                product-card
-                group relative block w-full
-                aspect-[4/5] md:aspect-[3/4]
-                rounded-3xl overflow-hidden
-                shadow-[0_10px_30px_rgba(11,41,66,0.1)]
-                hover:shadow-[0_20px_40px_rgba(11,41,66,0.2)]
-                transition-all duration-500 ease-out
-                hover:-translate-y-2
-                ${isVisible ? "animate-fade-up" : "opacity-0"}
-              `}
-              style={{ animationDelay: `${idx * 120}ms` }}
-            >
-              <Image
-                src={category.image}
-                alt={category.title}
-                fill
-                className="
-                  object-cover
-                  transition-transform duration-700 ease-out
-                  group-hover:scale-110
-                  group-hover:rotate-1
-                "
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
+          {categories.map((category, idx) => {
+            const isVisible = visibleCards[idx];
+            return (
+              <Link
+                href={category.link}
+                key={idx}
+                data-index={idx}
+                className={`
+                  product-card
+                  group relative block w-full
+                  aspect-[4/5] md:aspect-[3/4]
+                  rounded-3xl overflow-hidden
+                  shadow-[0_10px_30px_rgba(11,41,66,0.1)]
+                  hover:shadow-[0_20px_40px_rgba(11,41,66,0.2)]
+                  transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:-translate-y-2
+                  will-change-transform
+                  ${
+                    isVisible
+                      ? "opacity-100 translate-y-0 scale-100 blur-0"
+                      : "opacity-0 translate-y-16 scale-95 blur-[2px]"
+                  }
+                `}
+                style={{ transitionDelay: `${(idx % 4) * 120}ms` }}
+              >
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  fill
+                  className="
+                    object-cover
+                    transition-transform duration-700 ease-out
+                    group-hover:scale-110
+                    group-hover:rotate-1
+                  "
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                />
 
-              {/* Shimmer effect on hover */}
-              <div
-                className="
-                  absolute inset-0 z-20
-                  -translate-x-full
-                  group-hover:translate-x-full
-                  transition-transform duration-1000 ease-out
-                  bg-gradient-to-r from-transparent via-white/20 to-transparent
-                  pointer-events-none
-                "
-              />
-
-              <div
-                className="
-                  absolute inset-0
-                  bg-gradient-to-t
-                  from-deep-navy
-                  via-deep-navy/30
-                  to-transparent
-                  opacity-80
-                  group-hover:opacity-95
-                  transition-opacity duration-500
-                "
-              />
-
-              {/* Gold border glow on hover */}
-              <div
-                className="
-                  absolute inset-0 rounded-3xl z-10
-                  ring-0 ring-spice-gold/0
-                  group-hover:ring-2 group-hover:ring-spice-gold/60
-                  transition-all duration-500
-                  pointer-events-none
-                "
-              />
-
-              <div className="absolute inset-0 p-8 flex flex-col justify-end z-30">
+                {/* Shimmer effect on hover */}
                 <div
                   className="
-                    transform translate-y-4
-                    group-hover:translate-y-0
-                    transition-transform duration-500 ease-out
+                    absolute inset-0 z-20
+                    -translate-x-full
+                    group-hover:translate-x-full
+                    transition-transform duration-1000 ease-out
+                    bg-gradient-to-r from-transparent via-white/20 to-transparent
+                    pointer-events-none
                   "
-                >
-                  <h3
-                    className="
-                      font-heading text-2xl font-bold
-                      text-white mb-3 drop-shadow-md
-                      transition-transform duration-500 ease-out
-                      group-hover:scale-[1.03] origin-left
-                    "
-                  >
-                    {category.title}
-                  </h3>
+                />
 
+                <div
+                  className="
+                    absolute inset-0
+                    bg-gradient-to-t
+                    from-deep-navy
+                    via-deep-navy/30
+                    to-transparent
+                    opacity-80
+                    group-hover:opacity-95
+                    transition-opacity duration-500
+                  "
+                />
+
+                {/* Gold border glow on hover */}
+                <div
+                  className="
+                    absolute inset-0 rounded-3xl z-10
+                    ring-0 ring-spice-gold/0
+                    group-hover:ring-2 group-hover:ring-spice-gold/60
+                    transition-all duration-500
+                    pointer-events-none
+                  "
+                />
+
+                <div className="absolute inset-0 p-8 flex flex-col justify-end z-30">
                   <div
                     className="
-                      flex items-center
-                      text-spice-gold font-semibold
-                      opacity-0 translate-y-2
-                      group-hover:opacity-100 group-hover:translate-y-0
-                      transition-all duration-500 ease-out delay-100
+                      transform translate-y-4
+                      group-hover:translate-y-0
+                      transition-transform duration-500 ease-out
                     "
                   >
-                    <span>View Products</span>
-
-                    <svg
+                    <h3
                       className="
-                        w-5 h-5 ml-2
-                        transform group-hover:translate-x-2
+                        font-heading text-2xl font-bold
+                        text-white mb-3 drop-shadow-md
                         transition-transform duration-500 ease-out
+                        group-hover:scale-[1.03] origin-left
                       "
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
+                      {category.title}
+                    </h3>
+
+                    <div
+                      className="
+                        flex items-center
+                        text-spice-gold font-semibold
+                        opacity-0 translate-y-2
+                        group-hover:opacity-100 group-hover:translate-y-0
+                        transition-all duration-500 ease-out delay-100
+                      "
+                    >
+                      <span>View Products</span>
+
+                      <svg
+                        className="
+                          w-5 h-5 ml-2
+                          transform group-hover:translate-x-2
+                          transition-transform duration-500 ease-out
+                        "
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
