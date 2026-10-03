@@ -16,34 +16,52 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://globalspiceexports.com"),
+  metadataBase: new URL("https://rjcrownline.com"),
 
   title: {
-    default: "RJCrownLine | Premium Agricultural Commodities",
+    default: "RJCrownLine | Agricultural & Food Commodity Exporter from India",
     template: "%s | RJCrownLine",
   },
 
   description:
-    "RJCrownLine is an exporter of premium quality spices, dry fruits, fresh fruits, vegetables, and millets from India to the world.",
+    "RJCrownLine is an India-based exporter and supplier of premium spices, dry fruits, fresh fruits, vegetables, pulses, and millets for global B2B markets.",
 
   keywords: [
     "RJCrownLine",
-    "export",
-    "spices",
-    "dry fruits",
-    "fresh fruits",
-    "vegetables",
-    "millets",
-    "pulses",
-    "india",
-    "agriculture",
-    "global trade",
-    "B2B exports",
+    "RJCrownLine exports",
+    "agricultural commodity exporter",
+    "agricultural exporter India",
+    "food commodity exporter India",
+    "agricultural products exporter",
+    "spice exporter India",
+    "spices exporter",
+    "dry fruits exporter India",
+    "fresh fruits exporter India",
+    "vegetable exporter India",
+    "millet exporter India",
+    "pulses exporter India",
+    "Indian food exporter",
+    "Indian agricultural products",
+    "B2B food exports",
+    "India global exports",
+    "agricultural commodities",
+    "food ingredients supplier",
+    "bulk food supplier India",
   ],
 
-  authors: [{ name: "RJCrownLine" }],
+  authors: [
+    {
+      name: "RJCrownLine",
+      url: "https://rjcrownline.com",
+    },
+  ],
+
   creator: "RJCrownLine",
   publisher: "RJCrownLine",
+
+  alternates: {
+    canonical: "https://rjcrownline.com",
+  },
 
   robots: {
     index: true,
@@ -59,21 +77,39 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://globalspiceexports.com",
-    title: "RJCrownLine | Premium Agricultural Commodities",
-    description:
-      "RJCrownLine is an exporter of premium quality spices, dry fruits, fresh fruits, vegetables, and millets from India to the world.",
+    locale: "en_IN",
+    url: "https://rjcrownline.com",
     siteName: "RJCrownLine",
+
+    title: "RJCrownLine | Agricultural & Food Commodity Exporter from India",
+
+    description:
+      "Exporting premium spices, dry fruits, fresh fruits, vegetables, pulses, and millets from India to global B2B markets.",
+
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "RJCrownLine - Agricultural and Food Commodity Exporter from India",
+      },
+    ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "RJCrownLine | Premium Agricultural Commodities",
+
+    title: "RJCrownLine | Agricultural & Food Commodity Exporter from India",
+
     description:
-      "RJCrownLine is an exporter of premium quality spices, dry fruits, fresh fruits, vegetables, and millets from India to the world.",
+      "Premium spices, dry fruits, fresh fruits, vegetables, pulses, and millets exported from India to global B2B markets.",
+
+    images: ["/images/og-image.jpg"],
+
     creator: "@rjcrownline",
   },
+
+  category: "Agriculture & Food Export",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

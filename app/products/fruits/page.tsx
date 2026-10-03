@@ -115,7 +115,7 @@ export default function FruitsPage() {
         <ProductDetailCard
           title="Fresh Mangoes"
           specs={mangoSpecs}
-          imageSrc="/images/fruits/Mango.webp"
+          imageSrc="/images/fruits/mango.webp"
         />
 
         {/* Pomegranate */}

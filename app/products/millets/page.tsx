@@ -91,24 +91,27 @@ export default function MilletsPage() {
     { label: "Availability", value: "Throughout the year" },
   ];
 
-
   return (
     <div className="min-h-screen bg-soft-blue pt-32 pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">Nutritious Millets</h1>
+        <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
+          Nutritious Millets
+        </h1>
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          Embrace the superfoods of the future. Our export-quality millets are gluten-free, highly nutritious, and sustainably grown to meet the rising global demand for healthy alternatives.
+          Embrace the superfoods of the future. Our export-quality millets are
+          gluten-free, highly nutritious, and sustainably grown to meet the
+          rising global demand for healthy alternatives.
         </p>
       </div>
 
       <div className="space-y-24 px-4 sm:px-6 lg:px-8 pb-24">
-        <ProductDetailCard 
+        <ProductDetailCard
           title="Pearl Millet (Bajra)"
           specs={pearlMilletSpecs}
           imageSrc="/images/millets/pearl_millet.jpg"
         />
-        <ProductDetailCard 
+        <ProductDetailCard
           title="Finger Millet (Ragi)"
           specs={fingerMilletSpecs}
           imageSrc="/images/millets/finger_millet.png"
@@ -117,49 +120,42 @@ export default function MilletsPage() {
         <ProductDetailCard
           title="Sorghum (Jowar)"
           specs={sorghumMilletSpecs}
-          imageSrc="/images/millets/sorghum_jowar.png"
+          imageSrc="/images/millets/sorghum.png"
         />
 
         {/* Foxtail Millet */}
         <ProductDetailCard
           title="Foxtail Millet (Kangni/Kakum)"
           specs={foxtailMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
+          imageSrc="/images/millets/foxtail.png"
         />
 
         {/* Barnyard Millet */}
         <ProductDetailCard
           title="Barnyard Millet (Sanwa/Jhangora)"
           specs={barnyardMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
+          imageSrc="/images/millets/BarnyardMillet.png"
         />
 
         {/* Kodo Millet */}
         <ProductDetailCard
           title="Kodo Millet (Kodon)"
           specs={kodoMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
+          imageSrc="/images/millets/KodoMillet.jpg"
         />
 
         {/* Little Millet */}
         <ProductDetailCard
           title="Little Millet (Kutki/Sama)"
           specs={littleMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
+          imageSrc="/images/millets/LittleMillet.jpg"
         />
 
         {/* Proso Millet */}
         <ProductDetailCard
           title="Proso Millet (Chena/Barri)"
           specs={prosoMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
-        />
-
-        {/* Browntop Millet */}
-        <ProductDetailCard
-          title="Browntop Millet (Makra)"
-          specs={browntopMilletSpecs}
-          imageSrc="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=2069&auto=format&fit=crop"
+          imageSrc="/images/millets/ProsoMillet.jpg"
         />
       </div>
       <CtaSection />

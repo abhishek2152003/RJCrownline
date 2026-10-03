@@ -60,7 +60,7 @@ export default function AboutUs() {
             <div className="w-full lg:w-1/2">
               <div className="relative w-full aspect-square md:aspect-video lg:aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1509315811345-672d83ef2fbc?q=80&w=1974&auto=format&fit=crop"
+                  src="/images/about.webp"
                   alt="Farmers harvesting spices"
                   fill
                   className="object-cover"

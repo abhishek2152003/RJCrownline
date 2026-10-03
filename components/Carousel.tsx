@@ -141,18 +141,12 @@ export default function Carousel() {
                   {slide.description}
                 </p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                  <Link
-                    href={slide.link}
-                    className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-industrial-blue hover:bg-ocean-blue transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(22,78,112,0.39)] hover:shadow-[0_6px_20px_rgba(40,120,168,0.23)]"
-                  >
-                    View Details
-                  </Link>
-                  <Link
+                  {/* <Link
                     href="/products"
                     className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-lg font-bold rounded-full text-white hover:bg-white hover:text-deep-navy transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
                   >
-                    View All Products
-                  </Link>
+                    Explore Our Products
+                  </Link> */}
                 </div>
               </div>
             </div>
