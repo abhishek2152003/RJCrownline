@@ -17,7 +17,7 @@ export default function Navbar() {
               <img
                 src="/logo.svg"
                 alt="RJCROWNLINE"
-                className="w-40 sm:w-48 md:w-56 lg:w-72 h-auto object-contain"
+                className="w-65 sm:w-70 md:w-75 lg:w-80 h-auto object-contain"
               />
             </Link>
           </div>
