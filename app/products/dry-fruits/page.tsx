@@ -125,7 +125,7 @@ export default function DryFruitsPage() {
         <ProductDetailCard
           title="Premium Pistachios (Pista)"
           specs={pistachiosSpecs}
-          imageSrc="/images/dryfruits/pistachios.webp"
+          imageSrc="/images/dryfruits/Pistachios.webp"
         />
 
         {/* Walnuts */}
@@ -146,7 +146,7 @@ export default function DryFruitsPage() {
         <ProductDetailCard
           title="Premium Dates (Khajoor)"
           specs={datesSpecs}
-          imageSrc="/images/dryfruits/dates.webp"
+          imageSrc="/images/dryfruits/Dates.webp"
         />
 
         {/* Golden Raisins */}

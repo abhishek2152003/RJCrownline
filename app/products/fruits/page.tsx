@@ -115,70 +115,70 @@ export default function FruitsPage() {
         <ProductDetailCard
           title="Fresh Mangoes"
           specs={mangoSpecs}
-          imageSrc="/images/fruits/mango.webp"
+          imageSrc="/images/fruits/Mango.webp"
         />
 
         {/* Pomegranate */}
         <ProductDetailCard
           title="Fresh Pomegranate (Bhagwa)"
           specs={pomegranateSpecs}
-          imageSrc="/images/fruits/pomegranate.webp"
+          imageSrc="/images/fruits/Pomegranate.webp"
         />
 
         {/* Grapes */}
         <ProductDetailCard
           title="Fresh Grapes"
           specs={grapesSpecs}
-          imageSrc="/images/fruits/grapes.webp"
+          imageSrc="/images/fruits/Grapes.webp"
         />
 
         {/* Banana */}
         <ProductDetailCard
           title="Fresh Bananas"
           specs={bananaSpecs}
-          imageSrc="/images/fruits/banana.webp"
+          imageSrc="/images/fruits/Banana.webp"
         />
 
         {/* Guava */}
         <ProductDetailCard
           title="Fresh Guava"
           specs={guavaSpecs}
-          imageSrc="/images/fruits/guava.webp"
+          imageSrc="/images/fruits/Guava.webp"
         />
 
         {/* Papaya */}
         <ProductDetailCard
           title="Fresh Papaya"
           specs={papayaSpecs}
-          imageSrc="/images/fruits/papaya.webp"
+          imageSrc="/images/fruits/Papaya.webp"
         />
 
         {/* Orange */}
         <ProductDetailCard
           title="Fresh Oranges"
           specs={orangeSpecs}
-          imageSrc="/images/fruits/orange.webp"
+          imageSrc="/images/fruits/Orange.webp"
         />
 
         {/* Watermelon */}
         <ProductDetailCard
           title="Fresh Watermelon"
           specs={watermelonSpecs}
-          imageSrc="/images/fruits/watermelon.webp"
+          imageSrc="/images/fruits/Watermelon.webp"
         />
 
         {/* Muskmelon */}
         <ProductDetailCard
           title="Fresh Muskmelon"
           specs={muskmelonSpecs}
-          imageSrc="/images/fruits/muskmelon.webp"
+          imageSrc="/images/fruits/Muskmelon.webp"
         />
 
         {/* Coconut */}
         <ProductDetailCard
           title="Fresh Coconut"
           specs={coconutSpecs}
-          imageSrc="/images/fruits/coconut.webp"
+          imageSrc="/images/fruits/Coconut.webp"
         />
       </div>
 
