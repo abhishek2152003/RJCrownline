@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #263238;
+  --deep-navy: #0B2942;
+  --industrial-blue: #164E70;
+  --ocean-blue: #2878A8;
+  --soft-blue: #EAF4F8;
+  --warm-sand: #F4EBDD;
+  --spice-gold: #C88A27;
+  --white: #FFFFFF;
+  --charcoal: #263238;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-deep-navy: var(--deep-navy);
+  --color-industrial-blue: var(--industrial-blue);
+  --color-ocean-blue: var(--ocean-blue);
+  --color-soft-blue: var(--soft-blue);
+  --color-warm-sand: var(--warm-sand);
+  --color-spice-gold: var(--spice-gold);
+  --color-white: var(--white);
+  --color-charcoal: var(--charcoal);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0B2942;
+    --foreground: #EAF4F8;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+}
+
+.stat-number {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+}
+
+/* Fix browser autofill background on transparent inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--charcoal) !important;
+}
+
+/* =======================
+   Contact us animation
+   ======================= */
+@keyframes contactSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contactFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes decorativeFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, 20px) scale(1.08);
+  }
+}
+
+.contact-item {
+  opacity: 0;
+  animation: contactSlideIn 0.7s ease-out forwards;
+}
+
+.contact-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.contact-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.contact-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.contact-heading {
+  opacity: 0;
+  animation: contactFadeUp 0.7s ease-out forwards;
+}
+
+.contact-decoration {
+  animation: decorativeFloat 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-item,
+  .contact-heading,
+  .contact-decoration {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Product Catalogue animations */
+/* In globals.css */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .product-card,
+  .product-card * {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* welcome section animation */
+@keyframes aboutReveal {
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aboutImageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.about-section.animate .about-reveal {
+  animation: aboutReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.about-section.animate .about-image-reveal {
+  animation: aboutImageReveal 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+.about-reveal,
+.about-image-reveal {
+  opacity: 0;
+}
+
+.about-section.animate .about-item-1 {
+  animation-delay: 0.1s;
+}
+
+.about-section.animate .about-item-2 {
+  animation-delay: 0.25s;
+}
+
+.about-section.animate .about-item-3 {
+  animation-delay: 0.4s;
+}
+
+.about-section.animate .about-item-4 {
+  animation-delay: 0.55s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal,
+  .about-image-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}
+
+/* About us page */
+@keyframes valueCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.value-card {
+  opacity: 0;
+}
+
+.values-visible .value-card {
+  animation: valueCardReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.values-visible .value-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.values-visible .value-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.values-visible .value-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.values-visible .value-card:nth-child(4) {
+  animation-delay: 0.55s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .value-card {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}
+.value-card .value-icon {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
