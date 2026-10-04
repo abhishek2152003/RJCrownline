@@ -2,6 +2,13 @@ import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
 
 export default function SpicesPage() {
+  const redChilliSpecs = [
+    { label: "Type", value: "Whole / Stemless / Powder" },
+    { label: "Color", value: "Bright Red / Deep Red" },
+    { label: "Flavor", value: "Spicy, Rich & Aromatic" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "25kg, 50kg PP Bags, Bulk Packaging" },
+  ];
   const blackPepperSpecs = [
     { label: "Type", value: "Whole Black Peppercorns" },
     { label: "Color", value: "Dark Brown to Black" },
@@ -87,7 +94,11 @@ export default function SpicesPage() {
           processed, and packaged to retain their essential oils.
         </p>
       </div>
-
+      <ProductDetailCard
+        title="Red Chillies"
+        specs={redChilliSpecs}
+        imageSrc="/images/spices/Red_Chillies.webp"
+      />
       <div className="space-y-24 px-4 sm:px-6 lg:px-8 pb-24">
         <ProductDetailCard
           title="Black Pepper"

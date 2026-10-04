@@ -156,11 +156,16 @@ export default function ContactUs() {
                       </h3>
 
                       <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
-                        +91 98765 43210
+                        +91 9225226384
                       </p>
-
                       <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
-                        +91 12345 67890
+                        +91 8999598255
+                      </p>
+                      <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
+                        +91 8850442186
+                      </p>
+                      <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
+                        +91 7738053995
                       </p>
                     </div>
                   </div>

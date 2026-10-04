@@ -79,19 +79,30 @@ export default function AboutUs() {
                   Established in the heart of Maharashtra, India,{" "}
                   <strong>RJCROWNLINE</strong> has grown from a humble
                   family-owned enterprise into a premier international exporter
-                  of premium spices, grains, and dry fruits.
+                  of premium spices, grains, dry fruits, and organic products.
                 </p>
+
                 <p>
                   We source our products directly from vetted, sustainable farms
                   across India, ensuring that every batch of turmeric, every
                   strand of saffron, and every handful of nuts meets the highest
                   global standards for purity and taste.
                 </p>
+
+                <p>
+                  Our growing range of <strong>organic products</strong> is
+                  carefully sourced from trusted farms that follow natural and
+                  responsible farming practices. We focus on maintaining the
+                  product's natural quality, freshness, and nutritional value
+                  while supporting sustainable agriculture and environmentally
+                  conscious farming communities.
+                </p>
+
                 <p>
                   With decades of agricultural expertise and a state-of-the-art
                   processing infrastructure, we are proud to be the trusted
-                  flavor partner for top culinary brands and distributors in
-                  over 20 countries.
+                  flavor partner for culinary brands and distributors around the
+                  world.
                 </p>
               </div>
             </div>
@@ -258,22 +269,28 @@ export default function AboutUs() {
               <div className="value-icon w-14 h-14 bg-soft-blue rounded-xl flex items-center justify-center text-industrial-blue mb-6 transition-colors duration-300 group-hover:text-spice-gold">
                 <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                   <path
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    d="M20 4C12 4 5 8 5 15c0 2.5 2 4 4 4 7 0 11-7 11-15Z"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
+                  <path
+                    d="M5 19c2-4 5-7 10-9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
                 </svg>
               </div>
 
               <h3 className="text-xl font-bold text-deep-navy">
-                Sustainability
+                Organic Products
               </h3>
 
               <p className="text-charcoal/70 mt-3">
-                We implement eco-friendly practices to minimize our carbon
-                footprint and preserve natural resources.
+                We source high-quality organic products grown using natural and
+                sustainable farming practices, ensuring purity and freshness.
               </p>
             </div>
           </div>

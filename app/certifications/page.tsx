@@ -4,46 +4,74 @@ import CtaSection from "@/components/CtaSection";
 export default function CertificationsPage() {
   const certifications = [
     {
-      name: "APEDA",
-      description:
-        "Agricultural and Processed Food Products Export Development Authority. Ensures our agricultural products meet the highest export standards.",
-      icon: "https://images.unsplash.com/photo-1614983646336-9286ebfaac87?q=80&w=200&auto=format&fit=crop",
-      color: "bg-green-100",
-    },
-    {
       name: "FSSAI",
       description:
-        "Food Safety and Standards Authority of India. Certifies that our processing and packaging facilities adhere to strict food safety norms.",
-      icon: "https://images.unsplash.com/photo-1534723452862-4c874018d66d?q=80&w=200&auto=format&fit=crop",
+        "Food Safety and Standards Authority of India. Ensures our food products and operations comply with India's food safety and quality requirements.",
+      icon: "/images/certificate/fssai.png",
       color: "bg-orange-100",
     },
     {
       name: "Spices Board of India",
       description:
-        "Registered with the Spices Board of India, guaranteeing the authenticity and premium quality of our exported Indian spices.",
-      icon: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=200&auto=format&fit=crop",
+        "Registered with the Spices Board of India for the export and promotion of quality Indian spices in international markets.",
+      icon: "/images/certificate/spicesboardofindia.png",
       color: "bg-yellow-100",
     },
     {
-      name: "ISO 9001:2015",
+      name: "APEDA",
       description:
-        "Certified for Quality Management Systems, demonstrating our continuous commitment to consistent quality and customer satisfaction.",
-      icon: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=200&auto=format&fit=crop",
+        "Agricultural and Processed Food Products Export Development Authority. Supports compliance and export standards for agricultural and processed food products.",
+      icon: "/images/certificate/apeda.png",
+      color: "bg-green-100",
+    },
+    {
+      name: "MPEDA",
+      description:
+        "Marine Products Export Development Authority. Provides regulatory support and promotes quality standards for eligible marine product exports.",
+      icon: "/images/certificate/mpeda.png",
+      color: "bg-cyan-100",
+    },
+    {
+      name: "IEC",
+      description:
+        "Import Export Code issued by the Directorate General of Foreign Trade. Enables businesses to legally conduct import and export activities in India.",
+      icon: "/images/certificate/iec.png",
+      color: "bg-blue-100",
+    },
+    {
+      name: "MSME",
+      description:
+        "Registered under India's Micro, Small and Medium Enterprises framework, supporting our business operations and participation in the formal business ecosystem.",
+      icon: "/images/certificate/msme.webp",
+      color: "bg-purple-100",
+    },
+    {
+      name: "GST",
+      description:
+        "Registered under India's Goods and Services Tax system, ensuring compliance with applicable indirect tax requirements.",
+      icon: "/images/certificate/gst.png",
+      color: "bg-indigo-100",
+    },
+    {
+      name: "ISO",
+      description:
+        "ISO certification demonstrates our commitment to structured quality management, consistent processes, and continuous improvement.",
+      icon: "/images/certificate/ISO.png",
       color: "bg-blue-100",
     },
     {
       name: "HACCP",
       description:
-        "Hazard Analysis Critical Control Point certification ensures food safety from biological, chemical, and physical hazards in production.",
-      icon: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=200&auto=format&fit=crop",
+        "Hazard Analysis and Critical Control Points system focused on identifying, preventing, and controlling food safety hazards throughout production and handling.",
+      icon: "/images/certificate/haccp.webp",
       color: "bg-teal-100",
     },
     {
-      name: "FDA Compliant",
+      name: "FDA",
       description:
-        "Our facilities and products comply with strict FDA guidelines for safe export and consumption in international markets.",
-      icon: "https://images.unsplash.com/photo-1574482620826-40685ca5eb21?q=80&w=200&auto=format&fit=crop",
-      color: "bg-indigo-100",
+        "Our export operations are prepared to meet applicable U.S. FDA food safety and regulatory requirements for international markets.",
+      icon: "/images/certificate/fda.png",
+      color: "bg-red-100",
     },
   ];
 
