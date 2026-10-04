@@ -6,6 +6,10 @@ import Link from "next/link";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setIsProductsOpen(false);
+  };
 
   return (
     <nav className="bg-deep-navy text-white sticky top-0 z-50 shadow-md">
@@ -158,109 +162,145 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden bg-industrial-blue/95 backdrop-blur-sm border-t border-ocean-blue">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
-            <Link
-              href="/"
-              className="block px-3 py-2 rounded-md text-base font-semibold text-spice-gold bg-ocean-blue/20"
+      <div
+        className={`lg:hidden overflow-hidden bg-industrial-blue/95 backdrop-blur-sm border-t border-ocean-blue transition-all duration-300 ease-in-out ${
+          isOpen
+            ? "max-h-[600px] opacity-100 translate-y-0"
+            : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
+        }`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+          <Link
+            href="/"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-semibold text-spice-gold bg-ocean-blue/20 transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            Home
+          </Link>
+
+          <Link
+            href="/about"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            About Us
+          </Link>
+
+          <Link
+            href="/certifications"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            Certifications
+          </Link>
+
+          <Link
+            href="/services"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            Services
+          </Link>
+
+          <Link
+            href="/gallery"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            Gallery
+          </Link>
+
+          {/* Products */}
+          <div>
+            <button
+              onClick={() => setIsProductsOpen(!isProductsOpen)}
+              className="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
             >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/certifications"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
-            >
-              Certifications
-            </Link>
-            <Link
-              href="/services"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
-            >
-              Services
-            </Link>
-            <Link
-              href="/gallery"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
-            >
-              Gallery
-            </Link>
-            <div>
-              <button
-                onClick={() => setIsProductsOpen(!isProductsOpen)}
-                className="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
+              Products
+              <svg
+                className={`w-5 h-5 transition-transform duration-300 ${
+                  isProductsOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Products
-                <svg
-                  className={`w-5 h-5 transform transition-transform duration-300 ${isProductsOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isProductsOpen && (
-                <div className="pl-6 space-y-1 mt-1 border-l-2 border-ocean-blue ml-4 overflow-hidden">
-                  <Link
-                    href="/products/dry-fruits"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Dry Fruits
-                  </Link>
-                  <Link
-                    href="/products/fruits"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Fruits
-                  </Link>
-                  <Link
-                    href="/products/vegetable"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Vegetable
-                  </Link>
-                  <Link
-                    href="/products/spices"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Spices
-                  </Link>
-                  <Link
-                    href="/products/millets"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Millets
-                  </Link>
-                  <Link
-                    href="/products/pulses"
-                    className="block px-3 py-2 rounded-md text-sm font-medium hover:text-spice-gold transition-colors"
-                  >
-                    Pulses
-                  </Link>
-                </div>
-              )}
-            </div>
-            <Link
-              href="/contact"
-              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-ocean-blue hover:text-spice-gold transition-colors"
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            {/* Product submenu */}
+            <div
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                isProductsOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              }`}
             >
-              Contact Us
-            </Link>
+              <div className="pl-6 space-y-1 mt-1 border-l-2 border-ocean-blue ml-4">
+                <Link
+                  href="/products/dry-fruits"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Dry Fruits
+                </Link>
+
+                <Link
+                  href="/products/fruits"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Fruits
+                </Link>
+
+                <Link
+                  href="/products/vegetable"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Vegetable
+                </Link>
+
+                <Link
+                  href="/products/spices"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Spices
+                </Link>
+
+                <Link
+                  href="/products/millets"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Millets
+                </Link>
+
+                <Link
+                  href="/products/pulses"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  Pulses
+                </Link>
+              </div>
+            </div>
           </div>
+
+          <Link
+            href="/contact"
+            onClick={closeMobileMenu}
+            className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
+          >
+            Contact Us
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
