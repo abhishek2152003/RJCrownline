@@ -52,27 +52,6 @@ export default function CertificationsPage() {
       icon: "/images/certificate/gst.png",
       color: "bg-indigo-100",
     },
-    {
-      name: "ISO",
-      description:
-        "ISO certification demonstrates our commitment to structured quality management, consistent processes, and continuous improvement.",
-      icon: "/images/certificate/ISO.png",
-      color: "bg-blue-100",
-    },
-    {
-      name: "HACCP",
-      description:
-        "Hazard Analysis and Critical Control Points system focused on identifying, preventing, and controlling food safety hazards throughout production and handling.",
-      icon: "/images/certificate/haccp.webp",
-      color: "bg-teal-100",
-    },
-    {
-      name: "FDA",
-      description:
-        "Our export operations are prepared to meet applicable U.S. FDA food safety and regulatory requirements for international markets.",
-      icon: "/images/certificate/fda.png",
-      color: "bg-red-100",
-    },
   ];
 
   return (

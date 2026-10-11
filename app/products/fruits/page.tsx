@@ -64,6 +64,17 @@ export default function FruitsPage() {
     { label: "Packing", value: "10kg, 15kg Carton Boxes" },
     { label: "Availability", value: "October to March" },
   ];
+  const pineappleSpecs = [
+    { label: "Type", value: "Fresh Pineapple" },
+    { label: "Color", value: "Golden Yellow Flesh, Green to Golden Skin" },
+    { label: "Taste", value: "Sweet and Tangy" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "5kg, 10kg Carton Boxes" },
+    {
+      label: "Availability",
+      value: "Throughout the year, depending on region",
+    },
+  ];
 
   const watermelonSpecs = [
     { label: "Type", value: "Seeded / Seedless Watermelon" },
@@ -158,6 +169,11 @@ export default function FruitsPage() {
           title="Fresh Oranges"
           specs={orangeSpecs}
           imageSrc="/images/fruits/Orange.webp"
+        />
+        <ProductDetailCard
+          title="Fresh Pineapple"
+          specs={pineappleSpecs}
+          imageSrc="/images/fruits/Pineapple.webp"
         />
 
         {/* Watermelon */}

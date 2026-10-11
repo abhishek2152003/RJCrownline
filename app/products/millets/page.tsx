@@ -2,6 +2,28 @@ import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
 
 export default function MilletsPage() {
+  const basmatiRiceSpecs = [
+    { label: "Type", value: "Premium Basmati Rice" },
+    { label: "Color", value: "Pearl White" },
+    { label: "Quality", value: "Machine Cleaned / Sortex Cleaned" },
+    { label: "Grain", value: "Extra Long Grain" },
+    { label: "Aroma", value: "Natural Aromatic Fragrance" },
+    { label: "Moisture", value: "14% Max" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "5kg, 10kg, 25kg, 50kg Bags" },
+    { label: "Availability", value: "Throughout the year" },
+  ];
+  const riceSpecs = [
+    { label: "Type", value: "Non-Basmati Rice" },
+    { label: "Color", value: "White / Creamy White" },
+    { label: "Quality", value: "Machine Cleaned / Sortex Cleaned" },
+    { label: "Grain", value: "Long / Medium Grain" },
+    { label: "Moisture", value: "14% Max" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "25kg, 50kg PP Bags" },
+    { label: "Availability", value: "Throughout the year" },
+  ];
+
   const pearlMilletSpecs = [
     { label: "Type", value: "Pearl Millet (Bajra)" },
     { label: "Quality", value: "Machine Cleaned / Sortex Cleaned" },
@@ -90,6 +112,15 @@ export default function MilletsPage() {
     { label: "Packing", value: "25kg, 50kg PP Bags" },
     { label: "Availability", value: "Throughout the year" },
   ];
+  const makhanaSpecs = [
+    { label: "Type", value: "Makhana (Fox Nuts / Lotus Seeds)" },
+    { label: "Color", value: "White / Cream" },
+    { label: "Quality", value: "Premium / Machine Cleaned" },
+    { label: "Size", value: "5 Suta, 6 Suta, 7 Suta+" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "25kg, 50kg PP Bags" },
+    { label: "Availability", value: "Throughout the year" },
+  ];
 
   return (
     <div className="min-h-screen bg-soft-blue pt-32 pb-0">
@@ -106,6 +137,16 @@ export default function MilletsPage() {
       </div>
 
       <div className="space-y-24 px-4 sm:px-6 lg:px-8 pb-24">
+        <ProductDetailCard
+          title="Basmati Rice"
+          specs={basmatiRiceSpecs}
+          imageSrc="/images/millets/basmati_rice.webp"
+        />
+        <ProductDetailCard
+          title="Rice"
+          specs={riceSpecs}
+          imageSrc="/images/millets/rice.webp"
+        />
         <ProductDetailCard
           title="Pearl Millet (Bajra)"
           specs={pearlMilletSpecs}
@@ -156,6 +197,11 @@ export default function MilletsPage() {
           title="Proso Millet (Chena/Barri)"
           specs={prosoMilletSpecs}
           imageSrc="/images/millets/ProsoMillet.jpg"
+        />
+        <ProductDetailCard
+          title="Makhana (Fox Nuts)"
+          specs={makhanaSpecs}
+          imageSrc="/images/millets/makhana.webp"
         />
       </div>
       <CtaSection />

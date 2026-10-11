@@ -31,6 +31,13 @@ export default function SpicesPage() {
     { label: "Packing", value: "25kg, 50kg PP Bags" },
     { label: "Availability", value: "Throughout the year" },
   ];
+  const blackTurmericSpecs = [
+    { label: "Type", value: "Black Turmeric (Curcuma caesia)" },
+    { label: "Color", value: "Dark Brown Exterior, Bluish-Black Interior" },
+    { label: "Origin", value: "India" },
+    { label: "Packing", value: "1kg, 5kg, 10kg & Bulk Packaging" },
+    { label: "Availability", value: "Seasonal / Subject to Availability" },
+  ];
   const cuminSpecs = [
     { label: "Grade", value: "Singapore 98% / 99%, Europe 99.5%" },
     { label: "Origin", value: "Gujarat & Rajasthan, India" },
@@ -115,6 +122,11 @@ export default function SpicesPage() {
           title="Turmeric (Haldi)"
           specs={turmericSpecs}
           imageSrc="/images/spices/Turmeric.webp"
+        />
+        <ProductDetailCard
+          title="Black Turmeric (Kali Haldi)"
+          specs={blackTurmericSpecs}
+          imageSrc="/images/spices/BlackTurmeric.webp"
         />
         <ProductDetailCard
           title="Cumin Seeds (Jeera)"
