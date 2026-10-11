@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center">
+          <div className="flex-shrink-0 flex items-center notranslate" translate="no">
             <Link href="/" className="flex items-center">
               <img
                 src="/logo.svg"
@@ -126,6 +127,9 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
+            <div className="pl-2 border-l border-white/20">
+              <LanguageSelector variant="desktop" />
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -165,7 +169,7 @@ export default function Navbar() {
       <div
         className={`lg:hidden overflow-hidden bg-industrial-blue/95 backdrop-blur-sm border-t border-ocean-blue transition-all duration-300 ease-in-out ${
           isOpen
-            ? "max-h-[600px] opacity-100 translate-y-0"
+            ? "max-h-[800px] opacity-100 translate-y-0"
             : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
@@ -299,6 +303,8 @@ export default function Navbar() {
           >
             Contact Us
           </Link>
+
+          <LanguageSelector variant="mobile" onSelectLanguage={closeMobileMenu} />
         </div>
       </div>
     </nav>

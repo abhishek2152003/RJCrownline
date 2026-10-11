@@ -277,3 +277,71 @@ textarea:-webkit-autofill:active {
 .value-card:hover .value-icon {
   transform: scale(1.1) rotate(-5deg);
 }
+
+/* ==========================================================================
+   Google Translate Styling Overrides
+   Hides unwanted top banner frames, prevents header layout shifts, and removes tooltips
+   ========================================================================== */
+
+/* Modern & legacy Google Translate top banner bars and iframes */
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-ORHb,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-l4eHX-hSRLGd,
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+body > .skiptranslate:not(#google_translate_element) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Prevent Google Translate from pushing body down by 40px */
+html,
+body,
+html.translated-ltr body,
+html.translated-rtl body {
+  top: 0px !important;
+  position: static !important;
+  margin-top: 0px !important;
+  padding-top: 0px !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#google_translate_element {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
