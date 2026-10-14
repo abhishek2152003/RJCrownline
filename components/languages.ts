@@ -1,3 +1,4 @@
+
 export interface Language {
   code: string;
   name: string;
@@ -14,130 +15,170 @@ export const SUPPORTED_LANGUAGES: Language[] = [
   { code: "ru", name: "Russian", nativeName: "Русский", flag: "🇷🇺" },
 ];
 
+const COOKIE_NAME = "googtrans";
+const PRODUCTION_DOMAIN = "rjcrownline.com";
+
+function isLocalhost(): boolean {
+  const hostname = window.location.hostname;
+
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.endsWith(".local")
+  );
+}
+
 /**
- * Reads the current target language code from the googtrans cookie.
- * Defaults to 'en'.
+ * Read the Google Translate target language.
  */
 export function getCurrentLanguageCode(): string {
   if (typeof document === "undefined") return "en";
 
-  const cookies = document.cookie.split(";");
-  for (const cookie of cookies) {
-    const trimmed = cookie.trim();
-    if (trimmed.startsWith("googtrans=")) {
-      const val = decodeURIComponent(trimmed.substring("googtrans=".length));
-      // Format is typically /en/mr or /auto/mr
-      const parts = val.split("/");
-      if (parts.length >= 3 && parts[2]) {
-        return parts[2];
-      }
-    }
+  const cookie = document.cookie
+    .split("; ")
+    .find((item) => item.startsWith(`${COOKIE_NAME}=`));
+
+  if (!cookie) return "en";
+
+  try {
+    const value = decodeURIComponent(
+      cookie.substring(COOKIE_NAME.length + 1)
+    );
+
+    const parts = value.split("/");
+    const target = parts[2];
+
+    return SUPPORTED_LANGUAGES.some((lang) => lang.code === target)
+      ? target
+      : "en";
+  } catch {
+    return "en";
   }
-  return "en";
 }
 
 /**
- * Sets Google Translate cookie cleanly across localhost and domains.
+ * Delete googtrans cookies across the relevant domain scopes.
  */
-export function setGoogleTransCookie(targetCode: string): void {
+function clearGoogleTransCookies(): void {
   if (typeof document === "undefined") return;
 
   const hostname = window.location.hostname;
-  const isLocal =
-    hostname === "localhost" ||
-    hostname === "127.0.0.1" ||
-    hostname.endsWith(".local");
 
-  const clearCookie = (cookieName: string) => {
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    if (!isLocal) {
-      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${hostname};`;
-      document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${hostname};`;
-    }
-  };
+  const domains = new Set<string>([
+    hostname,
+    `.${hostname}`,
+  ]);
 
-  clearCookie("googtrans");
-
-  if (targetCode === "en") {
-    document.cookie = "googtrans=/en/en; path=/; max-age=31536000;";
-    if (!isLocal) {
-      document.cookie = `googtrans=/en/en; path=/; domain=${hostname}; max-age=31536000;`;
-      if (hostname.includes(".")) {
-        document.cookie = `googtrans=/en/en; path=/; domain=.${hostname}; max-age=31536000;`;
-      }
-    }
-    return;
+  // Clear cookies previously created for both production hostnames.
+  if (
+    hostname === PRODUCTION_DOMAIN ||
+    hostname === `www.${PRODUCTION_DOMAIN}` ||
+    hostname.endsWith(`.${PRODUCTION_DOMAIN}`)
+  ) {
+    domains.add(PRODUCTION_DOMAIN);
+    domains.add(`.${PRODUCTION_DOMAIN}`);
+    domains.add(`www.${PRODUCTION_DOMAIN}`);
+    domains.add(`.www.${PRODUCTION_DOMAIN}`);
   }
 
-  const cookieVal = `/en/${targetCode}`;
-  document.cookie = `googtrans=${cookieVal}; path=/; max-age=31536000;`;
-  document.cookie = `googtrans=/auto/${targetCode}; path=/; max-age=31536000;`;
+  // First clear host-only cookies (no domain attribute).
+  document.cookie =
+    `${COOKIE_NAME}=; Max-Age=0; path=/; SameSite=Lax`;
 
-  if (!isLocal) {
-    document.cookie = `googtrans=${cookieVal}; path=/; domain=${hostname}; max-age=31536000;`;
-    if (hostname.includes(".")) {
-      document.cookie = `googtrans=${cookieVal}; path=/; domain=.${hostname}; max-age=31536000;`;
-    }
+  // Then clear cookies for each matching domain scope.
+  for (const domain of domains) {
+    document.cookie =
+      `${COOKIE_NAME}=; Max-Age=0; path=/; domain=${domain}; SameSite=Lax`;
   }
 }
 
 /**
- * Changes the active language and triggers translation instantly in-place.
+ * Set one consistent cookie for non-English languages.
+ */
+export function setGoogleTransCookie(targetCode: string): void {
+  if (typeof window === "undefined") return;
+
+  clearGoogleTransCookies();
+
+  // English is the original language, so remove the preference.
+  if (targetCode === "en") return;
+
+  const isSupported = SUPPORTED_LANGUAGES.some(
+    (lang) => lang.code === targetCode
+  );
+
+  if (!isSupported) return;
+
+  const hostname = window.location.hostname;
+  const isProductionDomain =
+    hostname === PRODUCTION_DOMAIN ||
+    hostname === `www.${PRODUCTION_DOMAIN}`;
+
+  const domainAttribute =
+    !isLocalhost() && isProductionDomain
+      ? `; domain=.${PRODUCTION_DOMAIN}`
+      : "";
+
+  document.cookie =
+    `${COOKIE_NAME}=/en/${targetCode}; path=/; max-age=31536000; SameSite=Lax${domainAttribute}`;
+}
+
+/**
+ * Change language and restore the original page when English is selected.
  */
 export function changeLanguage(targetCode: string): void {
   if (typeof window === "undefined") return;
 
-  const isEnglish = targetCode === "en";
-
-  // 1. Set the cookie for persistence across pages and reloads
-  setGoogleTransCookie(targetCode);
-
-  // 2. Broadcast event for instant UI state update
-  window.dispatchEvent(
-    new CustomEvent("app:languageChanged", { detail: targetCode })
+  const isSupported = SUPPORTED_LANGUAGES.some(
+    (lang) => lang.code === targetCode
   );
 
-  // 3. Helper to trigger Google Translate's select element in-place
-  const triggerCombo = (): boolean => {
-    const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
-    if (select) {
-      select.value = isEnglish ? "" : targetCode;
-      select.dispatchEvent(new Event("change", { bubbles: true }));
-      select.dispatchEvent(new Event("input", { bubbles: true }));
+  if (!isSupported) return;
 
-      if (typeof select.onchange === "function") {
-        try {
-          select.onchange(new Event("change"));
-        } catch {
-          // ignore
-        }
-      }
-      return true;
-    }
-    return false;
-  };
+  // Persist or clear the preference before updating the UI.
+  setGoogleTransCookie(targetCode);
 
-  // Try applying immediately without any page reload
-  if (triggerCombo()) {
-    if (isEnglish) {
-      // When resetting back to original English, a quick reload restores pristine DOM text
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    }
+  window.dispatchEvent(
+    new CustomEvent("app:languageChanged", {
+      detail: targetCode,
+    })
+  );
+
+  // English must restore the original DOM, not translate it to "en".
+  if (targetCode === "en") {
+    window.location.reload();
     return;
   }
 
-  // If Google Translate hasn't finished loading into DOM yet, poll rapidly
-  let retries = 0;
-  const timer = setInterval(() => {
-    retries++;
-    if (triggerCombo() || retries >= 20) {
-      clearInterval(timer);
-      if (retries >= 20) {
-        // Fallback only if widget never loaded
-        window.location.reload();
-      }
+  const triggerTranslation = (): boolean => {
+    const select =
+      document.querySelector<HTMLSelectElement>(".goog-te-combo");
+
+    if (!select) return false;
+
+    if (select.value !== targetCode) {
+      select.value = targetCode;
+      select.dispatchEvent(new Event("change", { bubbles: true }));
     }
-  }, 50);
+
+    return true;
+  };
+
+  if (triggerTranslation()) return;
+
+  // Wait briefly for the Google Translate widget to initialize.
+  let attempts = 0;
+
+  const timer = window.setInterval(() => {
+    attempts++;
+
+    if (triggerTranslation()) {
+      window.clearInterval(timer);
+    } else if (attempts >= 20) {
+      window.clearInterval(timer);
+
+      // The saved cookie lets the widget apply the target after reload.
+      window.location.reload();
+    }
+  }, 100);
 }
