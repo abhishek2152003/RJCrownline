@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactUs() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -59,13 +61,11 @@ export default function ContactUs() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
-            Contact Us
+            {t("contact.title")}
           </h1>
           <div className="w-24 h-1 bg-spice-gold mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-soft-blue max-w-2xl mx-auto drop-shadow-md">
-            Whether you have a question about our products, pricing, or need to
-            arrange a global shipment, our team is ready to answer all your
-            questions.
+            {t("contact.subtitle")}
           </p>
         </div>
       </section>
@@ -99,7 +99,7 @@ export default function ContactUs() {
         font-bold mb-12 text-white
       "
                 >
-                  Get In Touch
+                  {t("contact.getInTouch")}
                 </h2>
 
                 <div className="space-y-10">
@@ -123,7 +123,7 @@ export default function ContactUs() {
 
                     <div>
                       <h3 className="font-bold text-xl mb-1 text-white tracking-wide">
-                        Email Us
+                        {t("contact.emailUs")}
                       </h3>
 
                       <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
@@ -152,7 +152,7 @@ export default function ContactUs() {
 
                     <div>
                       <h3 className="font-bold text-xl mb-1 text-white tracking-wide">
-                        Call Us
+                        {t("contact.callUs")}
                       </h3>
 
                       <p className="text-soft-blue/90 hover:text-spice-gold transition-colors cursor-pointer">
@@ -196,23 +196,23 @@ export default function ContactUs() {
 
                     <div>
                       <h3 className="font-bold text-xl mb-1 text-white tracking-wide">
-                        Headquarters
+                        {t("contact.headquarters")}
                       </h3>
 
                       <p className="text-soft-blue/90">
-                        Sai Sansar Heights, B/305
+                        {t("contact.addressLine1")}
                       </p>
 
                       <p className="text-soft-blue/90">
-                        Near Sacred Heart School, Above KTM Service
+                        {t("contact.addressLine2")}
                       </p>
 
                       <p className="text-soft-blue/90">
-                        Durga Nagar, Varapgaon
+                        {t("contact.addressLine3")}
                       </p>
 
                       <p className="text-soft-blue/90">
-                        Shahad (East), Maharashtra, India
+                        {t("contact.addressLine4")}
                       </p>
                     </div>
                   </div>
@@ -223,7 +223,7 @@ export default function ContactUs() {
             {/* Contact Form (Right Side) */}
             <div className="w-full lg:w-3/5 p-10 md:p-14 lg:p-20 bg-white">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-deep-navy mb-12">
-                Send Us A Message
+                {t("contact.sendMessageHeading")}
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-10 mt-8">
@@ -243,7 +243,7 @@ export default function ContactUs() {
                       htmlFor="firstName"
                       className="peer-focus:font-medium absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-industrial-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      First Name
+                      {t("contact.firstName")}
                     </label>
                   </div>
                   <div className="relative z-0 w-full group">
@@ -261,7 +261,7 @@ export default function ContactUs() {
                       htmlFor="lastName"
                       className="peer-focus:font-medium absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-industrial-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Last Name
+                      {t("contact.lastName")}
                     </label>
                   </div>
                 </div>
@@ -282,7 +282,7 @@ export default function ContactUs() {
                       htmlFor="email"
                       className="peer-focus:font-medium absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-industrial-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Email Address
+                      {t("contact.email")}
                     </label>
                   </div>
                   <div className="relative z-0 w-full group">
@@ -300,7 +300,7 @@ export default function ContactUs() {
                       htmlFor="phone"
                       className="peer-focus:font-medium absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-industrial-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
-                      Phone Number
+                      {t("contact.phone")}
                     </label>
                   </div>
                 </div>
@@ -320,7 +320,7 @@ export default function ContactUs() {
                     htmlFor="message"
                     className="peer-focus:font-medium absolute text-lg text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-industrial-blue peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
-                    Your Message
+                    {t("contact.message")}
                   </label>
                 </div>
 
@@ -328,7 +328,7 @@ export default function ContactUs() {
                   type="submit"
                   className="w-full bg-industrial-blue hover:bg-ocean-blue text-white font-bold text-xl py-5 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(22,78,112,0.39)] hover:shadow-[0_6px_20px_rgba(40,120,168,0.3)] flex justify-center items-center group mt-12"
                 >
-                  Send Message
+                  {t("contact.sendButton")}
                   <svg
                     className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300"
                     fill="none"

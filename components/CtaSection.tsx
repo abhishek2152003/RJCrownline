@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CtaSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative py-24 bg-deep-navy overflow-hidden">
       {/* Background Image with Overlay */}
@@ -18,21 +23,19 @@ export default function CtaSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Ready to source premium{" "}
-            <span className="text-spice-gold">authentic flavors</span> for your
-            market?
+            {t("home.cta.titlePrefix")}{" "}
+            <span className="text-spice-gold">{t("home.cta.titleHighlight")}</span>{" "}
+            {t("home.cta.titleSuffix")}
           </h2>
           <p className="text-xl text-soft-blue mb-10 leading-relaxed">
-            Partner with us for reliable, high-quality agricultural exports. We
-            provide end-to-end solutions tailored to your global distribution
-            needs.
+            {t("home.cta.description")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold rounded-xl text-deep-navy bg-spice-gold hover:bg-yellow-500 transition-all duration-300 shadow-[0_4px_14px_0_rgba(200,138,39,0.39)] hover:shadow-[0_6px_20px_rgba(200,138,39,0.5)] transform hover:-translate-y-1 group"
             >
-              Contact Our Team
+              {t("buttons.contactOurTeam")}
               <svg
                 className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
                 fill="none"

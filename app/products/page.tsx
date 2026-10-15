@@ -1,7 +1,12 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ProductsPage() {
+  const { t } = useLanguage();
+
   const blackRaisinSpecs = [
     { label: "Type", value: "Dry grapes" },
     { label: "Color", value: "Black" },
@@ -16,10 +21,15 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen bg-soft-blue pt-32 pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
-        <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-4">Our Products</h1>
+        <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-4">
+          {t("productsPage.allProducts.title", "Our Products")}
+        </h1>
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-6"></div>
         <p className="text-lg text-charcoal/80 max-w-2xl mx-auto">
-          Explore our premium range of export-quality agricultural commodities, sourced directly from reliable agro vendors.
+          {t(
+            "productsPage.allProducts.subtitle",
+            "Explore our premium range of export-quality agricultural commodities, sourced directly from reliable agro vendors."
+          )}
         </p>
       </div>
 

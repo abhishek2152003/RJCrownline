@@ -3,8 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutUs() {
+  const { t } = useLanguage();
   const valuesRef = useRef(null);
   const [valuesVisible, setValuesVisible] = useState(false);
 
@@ -43,12 +45,14 @@ export default function AboutUs() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-5xl md:text-6xl font-extrabold text-white mb-6">
-            About Us
+            {t("aboutPage.title", "About Us")}
           </h1>
           <div className="w-24 h-1 bg-spice-gold mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-soft-blue max-w-2xl mx-auto">
-            Discover the heritage, passion, and commitment that drives
-            RJCROWNLINE to deliver pure flavors worldwide.
+            {t(
+              "aboutPage.subtitle",
+              "Discover the heritage, passion, and commitment that drives RJCROWNLINE to deliver pure flavors worldwide.",
+            )}
           </p>
         </div>
       </section>
@@ -69,40 +73,41 @@ export default function AboutUs() {
             </div>
             <div className="w-full lg:w-1/2">
               <span className="text-spice-gold font-bold tracking-widest uppercase text-sm mb-2 block">
-                Company Profile
+                {t("aboutPage.companyProfileBadge", "Company Profile")}
               </span>
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-6">
-                Our Legacy of RJCROWNLINE
+                {t(
+                  "aboutPage.companyProfileTitle",
+                  "Our Legacy of RJCROWNLINE",
+                )}
               </h2>
               <div className="space-y-4 text-charcoal text-lg leading-relaxed">
                 <p>
-                  Established in the heart of Maharashtra, India,{" "}
-                  <strong>RJCROWNLINE</strong> has grown from a humble
-                  family-owned enterprise into a premier international exporter
-                  of premium spices, grains, dry fruits, and organic products.
+                  {t(
+                    "aboutPage.p1",
+                    "Established in the heart of Maharashtra, India, RJCROWNLINE has grown from a humble family-owned enterprise into a premier international exporter of premium spices, grains, dry fruits, and organic products.",
+                  )}
                 </p>
 
                 <p>
-                  We source our products directly from vetted, sustainable farms
-                  across India, ensuring that every batch of turmeric, every
-                  strand of saffron, and every handful of nuts meets the highest
-                  global standards for purity and taste.
+                  {t(
+                    "aboutPage.p2",
+                    "We source our products directly from vetted, sustainable farms across India, ensuring that every batch of turmeric, every strand of saffron, and every handful of nuts meets the highest global standards for purity and taste.",
+                  )}
                 </p>
 
                 <p>
-                  Our growing range of <strong>organic products</strong> is
-                  carefully sourced from trusted farms that follow natural and
-                  responsible farming practices. We focus on maintaining the
-                  product's natural quality, freshness, and nutritional value
-                  while supporting sustainable agriculture and environmentally
-                  conscious farming communities.
+                  {t(
+                    "aboutPage.p3",
+                    "Our growing range of organic products is carefully sourced from trusted farms that follow natural and responsible farming practices. We focus on maintaining the product's natural quality, freshness, and nutritional value while supporting sustainable agriculture and environmentally conscious farming communities.",
+                  )}
                 </p>
 
                 <p>
-                  With decades of agricultural expertise and a state-of-the-art
-                  processing infrastructure, we are proud to be the trusted
-                  flavor partner for culinary brands and distributors around the
-                  world.
+                  {t(
+                    "aboutPage.p4",
+                    "With decades of agricultural expertise and a state-of-the-art processing infrastructure, we are proud to be the trusted flavor partner for culinary brands and distributors around the world.",
+                  )}
                 </p>
               </div>
             </div>
@@ -131,13 +136,13 @@ export default function AboutUs() {
               </svg>
             </div>
             <h2 className="font-heading text-4xl font-bold mb-6">
-              Our Mission
+              {t("aboutPage.missionTitle", "Our Mission")}
             </h2>
             <p className="text-lg text-white/90 leading-relaxed">
-              To seamlessly bridge the gap between local farmers and global
-              markets by delivering 100% pure, unadulterated, and ethically
-              sourced agricultural products that elevate culinary experiences
-              worldwide.
+              {t(
+                "aboutPage.missionDesc",
+                "To seamlessly bridge the gap between local farmers and global markets by delivering 100% pure, unadulterated, and ethically sourced agricultural products that elevate culinary experiences worldwide.",
+              )}
             </p>
           </div>
 
@@ -164,11 +169,14 @@ export default function AboutUs() {
                 />
               </svg>
             </div>
-            <h2 className="font-heading text-4xl font-bold mb-6">Our Vision</h2>
+            <h2 className="font-heading text-4xl font-bold mb-6">
+              {t("aboutPage.visionTitle", "Our Vision")}
+            </h2>
             <p className="text-lg text-white/90 leading-relaxed">
-              To be the globally recognized gold standard in the spice and
-              agricultural export industry, championed for our uncompromising
-              commitment to quality, sustainability, and fair-trade practices.
+              {t(
+                "aboutPage.visionDesc",
+                "To be the globally recognized gold standard in the spice and agricultural export industry, championed for our uncompromising commitment to quality, sustainability, and fair-trade practices.",
+              )}
             </p>
           </div>
         </div>
@@ -179,10 +187,10 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-spice-gold font-bold tracking-widest uppercase text-sm mb-2 block">
-              Our Core Principles
+              {t("aboutPage.valuesBadge", "Our Core Principles")}
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-deep-navy mb-4">
-              Company Values
+              {t("aboutPage.valuesTitle", "Company Values")}
             </h2>
             <div className="w-24 h-1 bg-spice-gold mx-auto rounded-full"></div>
           </div>
@@ -208,12 +216,14 @@ export default function AboutUs() {
               </div>
 
               <h3 className="text-xl font-bold text-deep-navy">
-                Uncompromising Quality
+                {t("aboutPage.val1Title", "Uncompromising Quality")}
               </h3>
 
               <p className="text-charcoal/70 mt-3">
-                We employ rigorous testing and quality control measures at every
-                stage, from farm to packaging.
+                {t(
+                  "aboutPage.val1Desc",
+                  "We employ rigorous testing and quality control measures at every stage, from farm to packaging.",
+                )}
               </p>
             </div>
             {/* Value 2 */}
@@ -231,12 +241,14 @@ export default function AboutUs() {
               </div>
 
               <h3 className="text-xl font-bold text-deep-navy">
-                Ethical Sourcing
+                {t("aboutPage.val2Title", "Ethical Sourcing")}
               </h3>
 
               <p className="text-charcoal/70 mt-3">
-                We believe in fair trade, ensuring our partner farmers are
-                compensated fairly for their hard work.
+                {t(
+                  "aboutPage.val2Desc",
+                  "We believe in fair trade, ensuring our partner farmers are compensated fairly for their hard work.",
+                )}
               </p>
             </div>
 
@@ -255,12 +267,14 @@ export default function AboutUs() {
               </div>
 
               <h3 className="text-xl font-bold text-deep-navy">
-                Customer First
+                {t("aboutPage.val3Title", "Customer First")}
               </h3>
 
               <p className="text-charcoal/70 mt-3">
-                Your satisfaction is our priority. We offer tailored packaging
-                and fast, reliable global shipping.
+                {t(
+                  "aboutPage.val3Desc",
+                  "Your satisfaction is our priority. We offer tailored packaging and fast, reliable global shipping.",
+                )}
               </p>
             </div>
 
@@ -285,12 +299,14 @@ export default function AboutUs() {
               </div>
 
               <h3 className="text-xl font-bold text-deep-navy">
-                Organic Products
+                {t("aboutPage.val4Title", "Organic Products")}
               </h3>
 
               <p className="text-charcoal/70 mt-3">
-                We source high-quality organic products grown using natural and
-                sustainable farming practices, ensuring purity and freshness.
+                {t(
+                  "aboutPage.val4Desc",
+                  "We source high-quality organic products grown using natural and sustainable farming practices, ensuring purity and freshness.",
+                )}
               </p>
             </div>
           </div>

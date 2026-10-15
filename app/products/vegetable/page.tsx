@@ -1,7 +1,11 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function VegetablePage() {
+  const { t } = useLanguage();
   const onionSpecs = [
     { label: "Type", value: "Red / Rose / White Onion" },
     { label: "Size", value: "25mm to 65mm+" },
@@ -90,15 +94,16 @@ export default function VegetablePage() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
-          Farm Fresh Vegetables
+          {t("productsPage.vegetables.title", "Farm Fresh Vegetables")}
         </h1>
 
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
 
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          Procured from trusted farms across India, our fresh vegetables are
-          carefully sorted, graded, and packed to preserve freshness, quality,
-          and shelf life for international markets.
+          {t(
+            "productsPage.vegetables.subtitle",
+            "Procured from trusted farms across India, our fresh vegetables are carefully sorted, graded, and packed to preserve freshness, quality, and shelf life for international markets."
+          )}
         </p>
       </div>
 

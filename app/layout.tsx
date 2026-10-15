@@ -3,7 +3,7 @@ import { Inter, Manrope } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
-import GoogleTranslateScript from "../components/GoogleTranslateScript";
+import { LanguageProvider } from "../context/LanguageContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -119,16 +119,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="preconnect" href="https://translate.google.com" />
-        <link rel="preconnect" href="https://translate.googleapis.com" />
-      </head>
+      <head />
       <body className="min-h-full flex flex-col">
-        <GoogleTranslateScript />
-        <Navbar />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <WhatsAppButton />
+        </LanguageProvider>
       </body>
     </html>
   );

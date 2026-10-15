@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const categories = [
   {
@@ -43,6 +44,7 @@ const categories = [
 ];
 
 export default function ProductSection() {
+  const { t, tPhrase } = useLanguage();
   const sectionRef = useRef<HTMLElement | null>(null);
   const [visibleCards, setVisibleCards] = useState<boolean[]>(
     new Array(categories.length).fill(false),
@@ -89,17 +91,14 @@ export default function ProductSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 md:mb-20">
           <span className="text-spice-gold font-bold tracking-widest uppercase text-sm mb-3 block">
-            Our Catalog
+            {t("home.productsSection.badge", "Our Catalog")}
           </span>
           <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-deep-navy mb-6">
-            Explore Our{" "}
-            <span className="text-industrial-blue">Premium Products</span>
+            {t("home.productsSection.title", "Explore Our Premium Products")}
           </h2>
           <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
           <p className="text-charcoal/80 text-lg max-w-2xl mx-auto">
-            From the finest hand-picked spices to export-grade dry fruits and
-            grains, we supply the world with uncompromised quality and authentic
-            flavors.
+            {t("home.productsSection.subtitle", "From the finest hand-picked spices to export-grade dry fruits and grains, we supply the world with uncompromised quality and authentic flavors.")}
           </p>
         </div>
 
@@ -131,7 +130,7 @@ export default function ProductSection() {
               >
                 <Image
                   src={category.image}
-                  alt={category.title}
+                  alt={tPhrase(category.title)}
                   fill
                   className="
                     object-cover
@@ -194,7 +193,7 @@ export default function ProductSection() {
                         group-hover:scale-[1.03] origin-left
                       "
                     >
-                      {category.title}
+                      {tPhrase(category.title)}
                     </h3>
 
                     <div
@@ -206,7 +205,7 @@ export default function ProductSection() {
                         transition-all duration-500 ease-out delay-100
                       "
                     >
-                      <span>View Products</span>
+                      <span>{t("buttons.viewProducts")}</span>
 
                       <svg
                         className="

@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const closeMobileMenu = () => {
@@ -17,7 +19,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center notranslate" translate="no">
+          <div
+            className="flex-shrink-0 flex items-center notranslate"
+            translate="no"
+          >
             <Link href="/" className="flex items-center">
               <img
                 src="/logo.svg"
@@ -33,35 +38,35 @@ export default function Navbar() {
               href="/"
               className="hover:text-spice-gold font-semibold transition-colors duration-200"
             >
-              Home
+              {t("nav.home")}
             </Link>
             <Link
               href="/about"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              About Us
+              {t("nav.about")}
             </Link>
             <Link
               href="/certifications"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Certifications
+              {t("nav.certifications")}
             </Link>
             <Link
               href="/services"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Services
+              {t("nav.services")}
             </Link>
             <Link
               href="/gallery"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Gallery
+              {t("nav.gallery")}
             </Link>
             <div className="relative group h-full flex items-center">
               <button className="flex items-center hover:text-spice-gold transition-colors duration-200 focus:outline-none">
-                Products
+                {t("nav.products")}
                 <svg
                   className="w-4 h-4 ml-1"
                   fill="none"
@@ -81,43 +86,43 @@ export default function Navbar() {
                   href="/products/dry-fruits"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors border-b border-gray-100"
                 >
-                  Dry Fruits
+                  {t("categories.dryFruits")}
                 </Link>
                 <Link
                   href="/products/fruits"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors border-b border-gray-100"
                 >
-                  Fruits
+                  {t("categories.fruits")}
                 </Link>
                 <Link
                   href="/products/vegetable"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors border-b border-gray-100"
                 >
-                  Vegetable
+                  {t("categories.vegetables")}
                 </Link>
                 <Link
                   href="/products/spices"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors border-b border-gray-100"
                 >
-                  Spices
+                  {t("categories.spices")}
                 </Link>
                 <Link
                   href="/products/millets"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors border-b border-gray-100"
                 >
-                  Millets
+                  {t("categories.millets")}
                 </Link>
                 <Link
                   href="/products/pulses"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors"
                 >
-                  Pulses
+                  {t("categories.pulses")}
                 </Link>
                 <Link
                   href="/products/seafood"
                   className="block px-4 py-3 hover:bg-soft-blue hover:text-spice-gold transition-colors"
                 >
-                  Seafood
+                  {t("categories.seafood")}
                 </Link>
               </div>
             </div>
@@ -125,7 +130,7 @@ export default function Navbar() {
               href="/contact"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Contact Us
+              {t("nav.contact")}
             </Link>
             <div className="pl-2 border-l border-white/20">
               <LanguageSelector variant="desktop" />
@@ -179,7 +184,7 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-semibold text-spice-gold bg-ocean-blue/20 transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            Home
+            {t("nav.home")}
           </Link>
 
           <Link
@@ -187,7 +192,7 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            About Us
+            {t("nav.about")}
           </Link>
 
           <Link
@@ -195,7 +200,7 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            Certifications
+            {t("nav.certifications")}
           </Link>
 
           <Link
@@ -203,7 +208,7 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            Services
+            {t("nav.services")}
           </Link>
 
           <Link
@@ -211,7 +216,7 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            Gallery
+            {t("nav.gallery")}
           </Link>
 
           {/* Products */}
@@ -220,7 +225,7 @@ export default function Navbar() {
               onClick={() => setIsProductsOpen(!isProductsOpen)}
               className="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
             >
-              Products
+              {t("nav.products")}
               <svg
                 className={`w-5 h-5 transition-transform duration-300 ${
                   isProductsOpen ? "rotate-180" : ""
@@ -250,7 +255,7 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Dry Fruits
+                  {t("categories.dryFruits")}
                 </Link>
 
                 <Link
@@ -258,7 +263,7 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Fruits
+                  {t("categories.fruits")}
                 </Link>
 
                 <Link
@@ -266,7 +271,7 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Vegetable
+                  {t("categories.vegetables")}
                 </Link>
 
                 <Link
@@ -274,7 +279,7 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Spices
+                  {t("categories.spices")}
                 </Link>
 
                 <Link
@@ -282,7 +287,7 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Millets
+                  {t("categories.millets")}
                 </Link>
 
                 <Link
@@ -290,7 +295,14 @@ export default function Navbar() {
                   onClick={closeMobileMenu}
                   className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
                 >
-                  Pulses
+                  {t("categories.pulses")}
+                </Link>
+                <Link
+                  href="/products/seafood"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 hover:text-spice-gold"
+                >
+                  {t("categories.seafood")}
                 </Link>
               </div>
             </div>
@@ -301,10 +313,13 @@ export default function Navbar() {
             onClick={closeMobileMenu}
             className="block px-3 py-2 rounded-md text-base font-medium transition-all duration-200 hover:bg-ocean-blue hover:text-spice-gold"
           >
-            Contact Us
+            {t("nav.contact")}
           </Link>
 
-          <LanguageSelector variant="mobile" onSelectLanguage={closeMobileMenu} />
+          <LanguageSelector
+            variant="mobile"
+            onSelectLanguage={closeMobileMenu}
+          />
         </div>
       </div>
     </nav>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const slides = [
   {
@@ -89,6 +90,7 @@ const slides = [
 ];
 
 export default function Carousel() {
+  const { t, tPhrase } = useLanguage();
   const [current, setCurrent] = useState(0);
 
   const prev = () =>
@@ -132,13 +134,13 @@ export default function Carousel() {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-2xl">
                 <span className="inline-block py-1 px-3 rounded-full bg-spice-gold/20 text-spice-gold border border-spice-gold/50 text-sm font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm">
-                  Featured Product
+                  {t("home.hero.badge", "Featured Product")}
                 </span>
                 <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6 drop-shadow-lg">
-                  {slide.title}
+                  {tPhrase(slide.title)}
                 </h2>
                 <p className="text-white/90 text-lg md:text-2xl font-medium leading-relaxed drop-shadow-md mb-10">
-                  {slide.description}
+                  {tPhrase(slide.description)}
                 </p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                   {/* <Link

@@ -1,7 +1,11 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FruitsPage() {
+  const { t } = useLanguage();
   const mangoSpecs = [
     { label: "Variety", value: "Alphonso / Kesar / Banganapalli" },
     { label: "Color", value: "Golden Yellow" },
@@ -108,15 +112,16 @@ export default function FruitsPage() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
-          Fresh Export Fruits
+          {t("productsPage.fruits.title", "Fresh Export Fruits")}
         </h1>
 
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
 
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          Experience the natural sweetness and premium quality of our
-          hand-picked, farm-fresh fruits. Carefully sourced, graded, and packed
-          to preserve freshness and quality during global transit.
+          {t(
+            "productsPage.fruits.subtitle",
+            "Experience the natural sweetness and premium quality of our hand-picked, farm-fresh fruits. Carefully sourced, graded, and packed to preserve freshness and quality during global transit."
+          )}
         </p>
       </div>
 

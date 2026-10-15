@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesPage() {
+  const { t } = useLanguage();
+
   useEffect(() => {
     const section = document.querySelector(".quality-section");
 
@@ -44,9 +47,11 @@ export default function ServicesPage() {
 
   const steps = [
     {
-      title: "Sourcing & Procurement",
-      description:
+      title: t("servicesPage.step1Title", "Sourcing & Procurement"),
+      description: t(
+        "servicesPage.step1Desc",
         "We source our products directly from reliable farmers and trusted agro vendors across India, ensuring the highest quality raw materials.",
+      ),
       icon: (
         <svg
           className="w-8 h-8 text-spice-gold"
@@ -64,9 +69,11 @@ export default function ServicesPage() {
       ),
     },
     {
-      title: "Quality Check & Processing",
-      description:
+      title: t("servicesPage.step2Title", "Quality Check & Processing"),
+      description: t(
+        "servicesPage.step2Desc",
         "Our experts properly clean, dry, and process the products. Every batch undergoes rigorous quality control to meet international export standards.",
+      ),
       icon: (
         <svg
           className="w-8 h-8 text-spice-gold"
@@ -84,9 +91,11 @@ export default function ServicesPage() {
       ),
     },
     {
-      title: "Packaging",
-      description:
+      title: t("servicesPage.step3Title", "Packaging"),
+      description: t(
+        "servicesPage.step3Desc",
         "We offer customized packaging solutions (5kg, 10kg, 15kg cartons, etc.) tailored to client requirements, ensuring freshness during transit.",
+      ),
       icon: (
         <svg
           className="w-8 h-8 text-spice-gold"
@@ -104,9 +113,11 @@ export default function ServicesPage() {
       ),
     },
     {
-      title: "Global Shipping",
-      description:
+      title: t("servicesPage.step4Title", "Global Shipping"),
+      description: t(
+        "servicesPage.step4Desc",
         "With a robust logistics network, we ensure timely and safe delivery of our agricultural commodities to clients worldwide.",
+      ),
       icon: (
         <svg
           className="w-8 h-8 text-spice-gold"
@@ -141,13 +152,14 @@ export default function ServicesPage() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
-            Our Export Process
+            {t("servicesPage.headerTitle", "Our Export Process")}
           </h1>
           <div className="w-24 h-1 bg-spice-gold mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-soft-blue max-w-3xl mx-auto drop-shadow-md">
-            From the fertile farms of India to your destination. We ensure
-            quality, transparency, and timely delivery at every step of our
-            export journey.
+            {t(
+              "servicesPage.headerSubtitle",
+              "From the fertile farms of India to your destination. We ensure quality, transparency, and timely delivery at every step of our export journey.",
+            )}
           </p>
         </div>
       </section>
@@ -157,17 +169,21 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-spice-gold font-bold uppercase tracking-widest text-5xl">
-              Our Services
+              {t("servicesPage.overviewBadge", "Our Services")}
             </span>
 
             <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-deep-navy mt-3 mb-6">
-              Complete Import & Export Solutions
+              {t(
+                "servicesPage.overviewTitle",
+                "Complete Import & Export Solutions",
+              )}
             </h2>
 
             <p className="text-charcoal/70 text-lg leading-relaxed">
-              From sourcing and quality control to packaging and international
-              logistics, we provide end-to-end solutions for agricultural
-              commodities and food products.
+              {t(
+                "servicesPage.overviewSubtitle",
+                "From sourcing and quality control to packaging and international logistics, we provide end-to-end solutions for agricultural commodities and food products.",
+              )}
             </p>
           </div>
 
@@ -198,13 +214,14 @@ export default function ServicesPage() {
               </div>
 
               <h3 className="text-2xl font-bold text-deep-navy mb-4 font-heading">
-                Product Sourcing
+                {t("servicesPage.card1Title", "Product Sourcing")}
               </h3>
 
               <p className="text-charcoal/70 leading-relaxed">
-                We connect with trusted farmers, processors, and suppliers
-                across India to source quality agricultural commodities
-                according to buyer specifications.
+                {t(
+                  "servicesPage.card1Desc",
+                  "We connect with trusted farmers, processors, and suppliers across India to source quality agricultural commodities according to buyer specifications.",
+                )}
               </p>
             </div>
 
@@ -234,18 +251,18 @@ export default function ServicesPage() {
               </div>
 
               <h3 className="text-2xl font-bold text-deep-navy mb-4 font-heading">
-                Quality Assurance
+                {t("servicesPage.card2Title", "Quality Assurance")}
               </h3>
 
               <p className="text-charcoal/70 leading-relaxed">
-                Products are inspected and processed according to defined
-                quality specifications to maintain consistency, cleanliness,
-                freshness, and export suitability.
+                {t(
+                  "servicesPage.card2Desc",
+                  "Products are inspected and processed according to defined quality specifications to maintain consistency, cleanliness, freshness, and export suitability.",
+                )}
               </p>
             </div>
 
             {/* Card 3 */}
-
             <div
               className="group p-8 rounded-3xl bg-soft-blue border border-transparent
                       hover:border-spice-gold hover:-translate-y-2
@@ -271,13 +288,14 @@ export default function ServicesPage() {
               </div>
 
               <h3 className="text-2xl font-bold text-deep-navy mb-4 font-heading">
-                Global Logistics
+                {t("servicesPage.card3Title", "Global Logistics")}
               </h3>
 
               <p className="text-charcoal/70 leading-relaxed">
-                We coordinate transportation and shipment handling to help
-                ensure agricultural products reach international destinations
-                safely and efficiently.
+                {t(
+                  "servicesPage.card3Desc",
+                  "We coordinate transportation and shipment handling to help ensure agricultural products reach international destinations safely and efficiently.",
+                )}
               </p>
             </div>
           </div>
@@ -296,28 +314,46 @@ export default function ServicesPage() {
             {/* LEFT CONTENT */}
             <div className="quality-content opacity-0 translate-y-10 transition-all duration-1000 ease-out">
               <span className="text-spice-gold font-bold uppercase tracking-widest text-sm">
-                Quality First
+                {t("servicesPage.qualityBadge", "Quality First")}
               </span>
 
               <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-white mt-3 mb-6">
-                Quality You Can Trust
+                {t("servicesPage.qualityTitle", "Quality You Can Trust")}
               </h2>
 
               <p className="text-soft-blue/90 text-lg leading-relaxed mb-8">
-                Quality is integrated into every stage of our supply chain. From
-                sourcing and processing to final packaging, we focus on
-                maintaining consistent product standards for our international
-                buyers.
+                {t(
+                  "servicesPage.qualityDesc",
+                  "Quality is integrated into every stage of our supply chain. From sourcing and processing to final packaging, we focus on maintaining consistent product standards for our international buyers.",
+                )}
               </p>
 
               <div className="space-y-5">
                 {[
-                  "Carefully selected raw materials",
-                  "Product cleaning and sorting",
-                  "Batch-level quality checks",
-                  "Buyer-specific specifications",
-                  "Export-ready packaging",
-                  "Attention to shipment requirements",
+                  t(
+                    "servicesPage.qualityItem1",
+                    "Carefully selected raw materials",
+                  ),
+                  t(
+                    "servicesPage.qualityItem2",
+                    "Product cleaning and sorting",
+                  ),
+                  t(
+                    "servicesPage.qualityItem3",
+                    "Batch-level quality checks",
+                  ),
+                  t(
+                    "servicesPage.qualityItem4",
+                    "Buyer-specific specifications",
+                  ),
+                  t(
+                    "servicesPage.qualityItem5",
+                    "Export-ready packaging",
+                  ),
+                  t(
+                    "servicesPage.qualityItem6",
+                    "Attention to shipment requirements",
+                  ),
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -364,11 +400,17 @@ export default function ServicesPage() {
 
               <div className="absolute bottom-8 left-8 right-8 translate-y-4 opacity-0 quality-caption transition-all duration-700 delay-500">
                 <p className="text-spice-gold font-bold uppercase tracking-widest text-sm mb-2">
-                  From India to the World
+                  {t(
+                    "servicesPage.qualityCaptionBadge",
+                    "From India to the World",
+                  )}
                 </p>
 
                 <h3 className="text-white text-3xl font-bold font-heading">
-                  Consistency at Every Stage
+                  {t(
+                    "servicesPage.qualityCaptionTitle",
+                    "Consistency at Every Stage",
+                  )}
                 </h3>
               </div>
             </div>
@@ -380,16 +422,21 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-spice-gold font-bold uppercase tracking-widest text-5xl">
-              Why Us
+              {t("servicesPage.whyBadge", "Why Us")}
             </span>
 
             <h2 className="font-heading text-4xl md:text-5xl font-extrabold text-deep-navy mt-3 mb-6">
-              Built Around Your Requirements
+              {t(
+                "servicesPage.whyTitle",
+                "Built Around Your Requirements",
+              )}
             </h2>
 
             <p className="text-charcoal/70 text-lg leading-relaxed">
-              We combine reliable sourcing, quality-focused processes, flexible
-              packaging, and international logistics to simplify global trade.
+              {t(
+                "servicesPage.whySubtitle",
+                "We combine reliable sourcing, quality-focused processes, flexible packaging, and international logistics to simplify global trade.",
+              )}
             </p>
           </div>
 
@@ -397,23 +444,35 @@ export default function ServicesPage() {
             {[
               {
                 number: "01",
-                title: "Reliable Sourcing",
-                text: "Strong relationships with farmers, suppliers, and processors across India.",
+                title: t("servicesPage.why1Title", "Reliable Sourcing"),
+                text: t(
+                  "servicesPage.why1Text",
+                  "Strong relationships with farmers, suppliers, and processors across India.",
+                ),
               },
               {
                 number: "02",
-                title: "Consistent Quality",
-                text: "Focused quality checks and product handling throughout the supply chain.",
+                title: t("servicesPage.why2Title", "Consistent Quality"),
+                text: t(
+                  "servicesPage.why2Text",
+                  "Focused quality checks and product handling throughout the supply chain.",
+                ),
               },
               {
                 number: "03",
-                title: "Flexible Solutions",
-                text: "Product specifications and packaging can be adapted to buyer requirements.",
+                title: t("servicesPage.why3Title", "Flexible Solutions"),
+                text: t(
+                  "servicesPage.why3Text",
+                  "Product specifications and packaging can be adapted to buyer requirements.",
+                ),
               },
               {
                 number: "04",
-                title: "Global Reach",
-                text: "Coordinated logistics and documentation support for international trade.",
+                title: t("servicesPage.why4Title", "Global Reach"),
+                text: t(
+                  "servicesPage.why4Text",
+                  "Coordinated logistics and documentation support for international trade.",
+                ),
               },
             ].map((item) => (
               <div

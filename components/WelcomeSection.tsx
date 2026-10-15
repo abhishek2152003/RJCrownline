@@ -1,7 +1,10 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function WelcomeSection() {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -35,36 +38,29 @@ export default function WelcomeSection() {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="w-full lg:w-1/2">
             <span className="about-reveal about-item-1 text-spice-gold font-bold tracking-widest uppercase text-sm mb-3 block">
-              Who We Are
+              {t("home.welcome.badge")}
             </span>
 
             <h2 className="about-reveal about-item-2 font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-6 leading-tight">
-              Welcome to <br />
-              <span className="text-industrial-blue">RJCROWNLINE</span>
+              {t("home.welcome.titlePrefix")} <br />
+              <span className="text-industrial-blue">{t("home.welcome.companyName")}</span>
             </h2>
 
             <div className="about-reveal about-item-3 w-20 h-1.5 bg-spice-gold rounded-full mb-8"></div>
 
             <div className="space-y-6 text-charcoal text-lg leading-relaxed">
               <p className="about-reveal about-item-3">
-                <strong>Mrs Jyoti Sangdore </strong>
-                is the founder of RJCROWNLINE. We offer premium
-                agri-commodities, dry fruits, and spices for export. We have a
-                robust, high-reach network with farmers in Maharashtra and all
-                over India.
+                <strong>{t("home.welcome.p1Founder")} </strong>
+                {t("home.welcome.p1Text")}
               </p>
 
               <p className="about-reveal about-item-4">
-                In a market with increasing demand, one needs to look for a
-                reliable provider who will match all your needs in a
-                satisfactory manner. We at <strong>RJCROWNLINE</strong> are
-                catering to exactly the same, and are thus earning a prominent
-                position in the market.
+                {t("home.welcome.p2Text")}
               </p>
 
               <div className="about-reveal about-item-4 p-6 bg-soft-blue border-l-4 border-spice-gold rounded-r-xl mt-8">
                 <p className="font-bold text-deep-navy text-xl">
-                  "We provide complete export solutions for Exporters."
+                  &ldquo;{t("home.welcome.highlightQuote")}&rdquo;
                 </p>
               </div>
             </div>
@@ -103,10 +99,10 @@ export default function WelcomeSection() {
                 </div>
                 <div>
                   <p className="font-heading font-bold text-xl md:text-2xl">
-                    Trusted
+                    {t("home.welcome.trustedTitle")}
                   </p>
                   <p className="text-soft-blue text-sm md:text-base font-medium">
-                    Export Solutions
+                    {t("home.welcome.trustedSubtitle")}
                   </p>
                 </div>
               </div>

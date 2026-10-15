@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface RequestQuoteModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ export default function RequestQuoteModal({
   onClose,
   productName = "",
 }: RequestQuoteModalProps) {
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -140,19 +142,21 @@ export default function RequestQuoteModal({
             </button>
 
             <p className="text-spice-gold text-sm font-semibold uppercase tracking-wider mb-1">
-              Product Enquiry
+              {t("buttons.sendInquiry")}
             </p>
 
             <h2
               id="quote-modal-title"
               className="font-heading text-2xl sm:text-3xl font-bold text-white"
             >
-              Request a Quote
+              {productName
+                ? `${t("modal.titlePrefix")} ${productName}`
+                : t("modal.generalTitle")}
             </h2>
 
             {productName && (
               <p className="text-soft-blue/90 mt-2">
-                Product:{" "}
+                {t("nav.products")}:{" "}
                 <span className="text-white font-semibold">{productName}</span>
               </p>
             )}
@@ -167,7 +171,7 @@ export default function RequestQuoteModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm font-semibold text-deep-navy mb-2">
-                  Full Name <span className="text-red-500">*</span>
+                  {t("modal.fullName")} <span className="text-red-500">*</span>
                 </label>
 
                 <input
@@ -176,14 +180,14 @@ export default function RequestQuoteModal({
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder={t("modal.fullNamePlaceholder")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-deep-navy mb-2">
-                  Company Name
+                  {t("modal.companyName")}
                 </label>
 
                 <input
@@ -191,7 +195,7 @@ export default function RequestQuoteModal({
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
-                  placeholder="Your company"
+                  placeholder={t("modal.companyPlaceholder")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
                 />
               </div>
@@ -201,7 +205,7 @@ export default function RequestQuoteModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm font-semibold text-deep-navy mb-2">
-                  Email Address <span className="text-red-500">*</span>
+                  {t("modal.emailAddress")} <span className="text-red-500">*</span>
                 </label>
 
                 <input
@@ -210,14 +214,14 @@ export default function RequestQuoteModal({
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="you@company.com"
+                  placeholder={t("modal.emailPlaceholder")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-deep-navy mb-2">
-                  Phone / WhatsApp
+                  {t("modal.phoneWhatsApp")}
                 </label>
 
                 <input
@@ -225,7 +229,7 @@ export default function RequestQuoteModal({
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+91 XXXXX XXXXX"
+                  placeholder={t("modal.phonePlaceholder")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
                 />
               </div>
@@ -234,7 +238,7 @@ export default function RequestQuoteModal({
             {/* Product */}
             <div>
               <label className="block text-sm font-semibold text-deep-navy mb-2">
-                Product
+                {t("nav.products")}
               </label>
 
               <input
@@ -248,7 +252,7 @@ export default function RequestQuoteModal({
             {/* Quantity */}
             <div>
               <label className="block text-sm font-semibold text-deep-navy mb-2">
-                Required Quantity
+                {t("modal.quantity")}
               </label>
 
               <input
@@ -256,7 +260,7 @@ export default function RequestQuoteModal({
                 name="quantity"
                 value={formData.quantity}
                 onChange={handleChange}
-                placeholder="e.g. 500 kg / 10 MT"
+                placeholder={t("modal.quantityPlaceholder")}
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
               />
             </div>
@@ -264,7 +268,7 @@ export default function RequestQuoteModal({
             {/* Message */}
             <div>
               <label className="block text-sm font-semibold text-deep-navy mb-2">
-                Additional Requirements
+                {t("modal.additionalMessage")}
               </label>
 
               <textarea
@@ -272,7 +276,7 @@ export default function RequestQuoteModal({
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                placeholder="Tell us about your requirements, packaging, destination, etc."
+                placeholder={t("modal.messagePlaceholder")}
                 className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-gray-50 text-charcoal outline-none resize-none transition-all focus:border-industrial-blue focus:ring-2 focus:ring-industrial-blue/10"
               />
             </div>
@@ -282,16 +286,16 @@ export default function RequestQuoteModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-200 text-charcoal font-semibold hover:bg-gray-50 transition-colors"
+                className="w-full sm:w-auto px-6 py-3 rounded-lg border border-gray-200 text-charcoal font-semibold hover:bg-gray-50 transition-colors cursor-pointer"
               >
-                Cancel
+                {t("buttons.close")}
               </button>
 
               <button
                 type="submit"
-                className="w-full sm:flex-1 px-6 py-3 rounded-lg bg-industrial-blue text-white font-semibold hover:bg-deep-navy transition-colors shadow-md"
+                className="w-full sm:flex-1 px-6 py-3 rounded-lg bg-industrial-blue text-white font-semibold hover:bg-deep-navy transition-colors shadow-md cursor-pointer"
               >
-                Send Quote Request
+                {t("modal.submitButton")}
               </button>
             </div>
           </form>

@@ -1,54 +1,73 @@
+"use client";
+
 import Image from "next/image";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CertificationsPage() {
+  const { t } = useLanguage();
+
   const certifications = [
     {
-      name: "FSSAI",
-      description:
+      name: t("certificationsPage.fssaiTitle", "FSSAI"),
+      description: t(
+        "certificationsPage.fssaiDesc",
         "Food Safety and Standards Authority of India. Ensures our food products and operations comply with India's food safety and quality requirements.",
+      ),
       icon: "/images/certificate/fssai.png",
       color: "bg-orange-100",
     },
     {
-      name: "Spices Board of India",
-      description:
+      name: t("certificationsPage.spicesBoardTitle", "Spices Board of India"),
+      description: t(
+        "certificationsPage.spicesBoardDesc",
         "Registered with the Spices Board of India for the export and promotion of quality Indian spices in international markets.",
+      ),
       icon: "/images/certificate/spicesboardofindia.png",
       color: "bg-yellow-100",
     },
     {
-      name: "APEDA",
-      description:
+      name: t("certificationsPage.apedaTitle", "APEDA"),
+      description: t(
+        "certificationsPage.apedaDesc",
         "Agricultural and Processed Food Products Export Development Authority. Supports compliance and export standards for agricultural and processed food products.",
+      ),
       icon: "/images/certificate/apeda.png",
       color: "bg-green-100",
     },
     {
-      name: "MPEDA",
-      description:
+      name: t("certificationsPage.mpedaTitle", "MPEDA"),
+      description: t(
+        "certificationsPage.mpedaDesc",
         "Marine Products Export Development Authority. Provides regulatory support and promotes quality standards for eligible marine product exports.",
+      ),
       icon: "/images/certificate/mpeda.png",
       color: "bg-cyan-100",
     },
     {
-      name: "IEC",
-      description:
+      name: t("certificationsPage.iecTitle", "IEC"),
+      description: t(
+        "certificationsPage.iecDesc",
         "Import Export Code issued by the Directorate General of Foreign Trade. Enables businesses to legally conduct import and export activities in India.",
+      ),
       icon: "/images/certificate/iec.png",
       color: "bg-blue-100",
     },
     {
-      name: "MSME",
-      description:
+      name: t("certificationsPage.msmeTitle", "MSME"),
+      description: t(
+        "certificationsPage.msmeDesc",
         "Registered under India's Micro, Small and Medium Enterprises framework, supporting our business operations and participation in the formal business ecosystem.",
+      ),
       icon: "/images/certificate/msme.webp",
       color: "bg-purple-100",
     },
     {
-      name: "GST",
-      description:
+      name: t("certificationsPage.gstTitle", "GST"),
+      description: t(
+        "certificationsPage.gstDesc",
         "Registered under India's Goods and Services Tax system, ensuring compliance with applicable indirect tax requirements.",
+      ),
       icon: "/images/certificate/gst.png",
       color: "bg-indigo-100",
     },
@@ -70,13 +89,14 @@ export default function CertificationsPage() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="font-heading text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
-            Our Certifications
+            {t("certificationsPage.title", "Our Certifications")}
           </h1>
           <div className="w-24 h-1 bg-spice-gold mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-soft-blue max-w-3xl mx-auto drop-shadow-md">
-            Uncompromising quality is at the heart of what we do. Our globally
-            recognized certifications ensure you receive only the safest,
-            highest-quality products.
+            {t(
+              "certificationsPage.subtitle",
+              "Uncompromising quality is at the heart of what we do. Our globally recognized certifications ensure you receive only the safest, highest-quality products.",
+            )}
           </p>
         </div>
       </section>

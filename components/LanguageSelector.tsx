@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import {
   SUPPORTED_LANGUAGES,
-  getCurrentLanguageCode,
-  changeLanguage,
   Language,
 } from "./languages";
+import { useLanguage } from "@/context/LanguageContext";
+import { LanguageCode } from "@/data/translations/index";
 
 interface LanguageSelectorProps {
   variant?: "desktop" | "mobile";
@@ -17,29 +17,9 @@ export default function LanguageSelector({
   variant = "desktop",
   onSelectLanguage,
 }: LanguageSelectorProps) {
-  const [currentCode, setCurrentCode] = useState<string>("en");
+  const { language, setLanguage, t } = useLanguage();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isTranslating, setIsTranslating] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Sync with cookie on mount and listen to changes
-  useEffect(() => {
-    setCurrentCode(getCurrentLanguageCode());
-
-    const handleLanguageChange = (e: Event) => {
-      const customEvent = e as CustomEvent<string>;
-      if (customEvent.detail) {
-        setCurrentCode(customEvent.detail);
-      } else {
-        setCurrentCode(getCurrentLanguageCode());
-      }
-    };
-
-    window.addEventListener("app:languageChanged", handleLanguageChange);
-    return () => {
-      window.removeEventListener("app:languageChanged", handleLanguageChange);
-    };
-  }, []);
 
   // Close when clicking outside or pressing Escape
   useEffect(() => {
@@ -69,20 +49,15 @@ export default function LanguageSelector({
   }, [isOpen]);
 
   const activeLanguage =
-    SUPPORTED_LANGUAGES.find((lang) => lang.code === currentCode) ||
+    SUPPORTED_LANGUAGES.find((lang) => lang.code === language) ||
     SUPPORTED_LANGUAGES[0];
 
   const handleSelect = (lang: Language) => {
     setIsOpen(false);
-    setIsTranslating(true);
-    setCurrentCode(lang.code);
-    changeLanguage(lang.code);
+    setLanguage(lang.code as LanguageCode);
     if (onSelectLanguage) {
       onSelectLanguage();
     }
-    setTimeout(() => {
-      setIsTranslating(false);
-    }, 400);
   };
 
   // Mobile layout
@@ -113,7 +88,7 @@ export default function LanguageSelector({
 
         <div className="grid grid-cols-2 gap-2">
           {SUPPORTED_LANGUAGES.map((lang) => {
-            const isSelected = lang.code === currentCode;
+            const isSelected = lang.code === language;
             return (
               <button
                 key={lang.code}
@@ -164,32 +139,28 @@ export default function LanguageSelector({
         <span className="font-semibold text-white tracking-wide">
           {activeLanguage.nativeName}
         </span>
-        {isTranslating ? (
-          <span className="w-3.5 h-3.5 border-2 border-spice-gold border-t-transparent rounded-full animate-spin" />
-        ) : (
-          <svg
-            className={`w-3.5 h-3.5 text-spice-gold transition-transform duration-200 ${
-              isOpen ? "rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2.5}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        )}
+        <svg
+          className={`w-3.5 h-3.5 text-spice-gold transition-transform duration-200 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2.5}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
       </button>
 
       {/* Simple Dropdown Menu */}
       {isOpen && (
         <div className="absolute right-0 top-full mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 z-50 overflow-hidden animate-fadeIn py-1">
           {SUPPORTED_LANGUAGES.map((lang) => {
-            const isSelected = lang.code === currentCode;
+            const isSelected = lang.code === language;
             return (
               <button
                 key={lang.code}

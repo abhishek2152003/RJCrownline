@@ -1,7 +1,11 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function MilletsPage() {
+  const { t } = useLanguage();
   const basmatiRiceSpecs = [
     { label: "Type", value: "Premium Basmati Rice" },
     { label: "Color", value: "Pearl White" },
@@ -126,13 +130,14 @@ export default function MilletsPage() {
     <div className="min-h-screen bg-soft-blue pt-32 pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
-          Nutritious Millets
+          {t("productsPage.millets.title", "Nutritious Millets & Grains")}
         </h1>
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          Embrace the superfoods of the future. Our export-quality millets are
-          gluten-free, highly nutritious, and sustainably grown to meet the
-          rising global demand for healthy alternatives.
+          {t(
+            "productsPage.millets.subtitle",
+            "Embrace the superfoods of the future. Our export-quality millets and grains are nutrient-dense, sustainably grown, and processed to meet global healthy living standards."
+          )}
         </p>
       </div>
 

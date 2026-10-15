@@ -1,7 +1,11 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function SeaFoodPage() {
+  const { t } = useLanguage();
   const vannameiShrimpSpecs = [
     { label: "Type", value: "Vannamei White Shrimp / Prawns" },
     { label: "Form", value: "Fresh / Frozen, Head-On / Headless" },
@@ -189,16 +193,16 @@ export default function SeaFoodPage() {
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
-          Premium Fish & Seafood
+          {t("productsPage.seafood.title", "Premium Fish & Seafood")}
         </h1>
 
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
 
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          We supply quality Indian fish and seafood sourced from trusted
-          fisheries and aquaculture partners. Our range includes frozen shrimp,
-          finfish, cephalopods and other seafood products prepared for
-          international markets.
+          {t(
+            "productsPage.seafood.subtitle",
+            "We supply quality Indian fish and seafood sourced from trusted fisheries and aquaculture partners. Our range includes frozen shrimp, finfish, cephalopods, and other seafood products prepared for international markets."
+          )}
         </p>
       </div>
 

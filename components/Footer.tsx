@@ -1,25 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-deep-navy text-white pt-16 pb-8 border-t-[6px] border-spice-gold">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h2 className="font-heading font-extrabold text-3xl tracking-wide">
+            <h2 className="font-heading font-extrabold text-3xl tracking-wide notranslate">
               RJCROWNLINE
               <br />
             </h2>
             <p className="text-soft-blue font-medium text-lg mt-4">
-              PURE FLAVORS. GLOBAL REACH.
+              {t("footer.tagline")}
             </p>
           </div>
 
           {/* Products Links */}
           <div>
             <h3 className="font-heading font-bold text-xl text-white mb-6 uppercase tracking-wider">
-              Products
+              {t("footer.productsHeading")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -27,7 +32,7 @@ export default function Footer() {
                   href="/products/dry-fruits"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Dry Fruits
+                  {t("categories.dryFruits")}
                 </Link>
               </li>
               <li>
@@ -35,7 +40,7 @@ export default function Footer() {
                   href="/products/fruits"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Fruits
+                  {t("categories.fruits")}
                 </Link>
               </li>
               <li>
@@ -43,7 +48,7 @@ export default function Footer() {
                   href="/products/vegetable"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Vegetable
+                  {t("categories.vegetables")}
                 </Link>
               </li>
               <li>
@@ -51,7 +56,7 @@ export default function Footer() {
                   href="/products/spices"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Spices
+                  {t("categories.spices")}
                 </Link>
               </li>
               <li>
@@ -59,7 +64,7 @@ export default function Footer() {
                   href="/products/seafood"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  SeaFood
+                  {t("categories.seafood")}
                 </Link>
               </li>
             </ul>
@@ -68,7 +73,7 @@ export default function Footer() {
           {/* Company Links */}
           <div>
             <h3 className="font-heading font-bold text-xl text-white mb-6 uppercase tracking-wider">
-              Company
+              {t("footer.companyHeading")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -76,7 +81,7 @@ export default function Footer() {
                   href="/about"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  About Us
+                  {t("nav.about")}
                 </Link>
               </li>
 
@@ -85,7 +90,7 @@ export default function Footer() {
                   href="/services"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Services
+                  {t("nav.services")}
                 </Link>
               </li>
               <li>
@@ -93,7 +98,7 @@ export default function Footer() {
                   href="/gallery"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Gallery
+                  {t("nav.gallery")}
                 </Link>
               </li>
               <li>
@@ -101,7 +106,7 @@ export default function Footer() {
                   href="/certifications"
                   className="text-soft-blue hover:text-spice-gold transition-colors duration-200"
                 >
-                  Certifications
+                  {t("nav.certifications")}
                 </Link>
               </li>
             </ul>
@@ -110,7 +115,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="font-heading font-bold text-xl text-white mb-6 uppercase tracking-wider">
-              Contact
+              {t("footer.contactHeading")}
             </h3>
             <ul className="space-y-4 text-soft-blue">
               <li className="flex items-start">
@@ -187,21 +192,20 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="pt-8 border-t border-industrial-blue flex flex-col md:flex-row justify-between items-center text-sm text-soft-blue/70">
           <p>
-            &copy; {new Date().getFullYear()} R J CrownLine. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} R J CrownLine. {t("footer.allRightsReserved")}
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link
               href="/privacy"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Privacy Policy
+              {t("footer.privacyPolicy")}
             </Link>
             <Link
               href="/terms"
               className="hover:text-spice-gold transition-colors duration-200"
             >
-              Terms of Service
+              {t("footer.termsOfService")}
             </Link>
           </div>
         </div>

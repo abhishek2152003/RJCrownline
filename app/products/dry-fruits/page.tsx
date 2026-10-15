@@ -1,7 +1,11 @@
+"use client";
+
 import ProductDetailCard from "@/components/ProductDetailCard";
 import CtaSection from "@/components/CtaSection";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function DryFruitsPage() {
+  const { t } = useLanguage();
   const cashewsSpecs = [
     { label: "Grade", value: "W240, W320, W450 (Export Quality)" },
     { label: "Color", value: "White / Pale Ivory" },
@@ -89,14 +93,14 @@ export default function DryFruitsPage() {
     <div className="min-h-screen bg-soft-blue pt-32 pb-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-extrabold text-deep-navy mb-6">
-          Premium Dry Fruits
+          {t("productsPage.dryFruits.title", "Premium Dry Fruits")}
         </h1>
         <div className="w-24 h-1.5 bg-spice-gold mx-auto rounded-full mb-8"></div>
         <p className="text-lg text-charcoal/80 max-w-3xl mx-auto leading-relaxed">
-          Discover our exclusive range of export-quality dry fruits, sourced
-          directly from the finest farms. Hand-picked, perfectly processed, and
-          hygienically packed to retain their natural crunch, flavor, and
-          immense nutritional value.
+          {t(
+            "productsPage.dryFruits.subtitle",
+            "Discover our exclusive range of export-quality dry fruits, sourced directly from the finest farms. Hand-picked, perfectly processed, and hygienically packed to retain their natural crunch, flavor, and immense nutritional value."
+          )}
         </p>
       </div>
 

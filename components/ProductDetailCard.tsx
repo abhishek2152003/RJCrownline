@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import RequestQuoteModal from "@/components/RequestQuoteModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface ProductSpec {
   label: string;
@@ -20,16 +21,18 @@ export default function ProductDetailCard({
   specs,
   imageSrc,
 }: ProductDetailProps) {
+  const { t, tSpec, tPhrase } = useLanguage();
   const [quoteOpen, setQuoteOpen] = useState(false);
+  const displayTitle = tPhrase(title);
 
   return (
     <>
       <div className="bg-white rounded-3xl shadow-[0_10px_40px_rgba(11,41,66,0.08)] hover:shadow-[0_20px_50px_rgba(11,41,66,0.12)] transition-shadow duration-300 overflow-hidden flex flex-col md:flex-row w-full max-w-6xl mx-auto my-10 group">
-        {/* Product Image Side */}
+          {/* Product Image Side */}
         <div className="w-full md:w-2/5 relative aspect-square md:aspect-auto overflow-hidden">
           <Image
             src={imageSrc}
-            alt={title}
+            alt={displayTitle}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 40vw"
@@ -43,7 +46,7 @@ export default function ProductDetailCard({
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
 
             <span className="text-xs font-bold text-deep-navy uppercase tracking-wider">
-              Export Quality
+              {t("specs.exportQuality")}
             </span>
           </div>
         </div>
@@ -52,7 +55,7 @@ export default function ProductDetailCard({
         <div className="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
           {/* Product Title */}
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-deep-navy mb-4">
-            {title}
+            {displayTitle}
           </h2>
 
           <div className="w-16 h-1.5 bg-spice-gold rounded-full mb-8" />
@@ -73,7 +76,7 @@ export default function ProductDetailCard({
                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
                 />
               </svg>
-              Specifications
+              {t("specs.title")}
             </h3>
 
             <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm md:text-base">
@@ -83,10 +86,12 @@ export default function ProductDetailCard({
                   className="flex flex-col border-l-2 border-spice-gold/50 pl-4"
                 >
                   <dt className="text-gray-500 font-medium mb-1 text-xs uppercase tracking-wide">
-                    {spec.label}
+                    {tSpec(spec.label)}
                   </dt>
 
-                  <dd className="font-bold text-deep-navy">{spec.value}</dd>
+                  <dd className="font-bold text-deep-navy">
+                    {tPhrase(spec.value)}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -97,9 +102,9 @@ export default function ProductDetailCard({
             <button
               type="button"
               onClick={() => setQuoteOpen(true)}
-              className="px-6 py-3 bg-industrial-blue text-white rounded-lg font-semibold hover:bg-deep-navy transition-colors duration-300"
+              className="px-6 py-3 bg-industrial-blue text-white rounded-lg font-semibold hover:bg-deep-navy transition-colors duration-300 cursor-pointer"
             >
-              Request a Quote
+              {t("buttons.requestQuote")}
             </button>
           </div>
         </div>
@@ -109,7 +114,7 @@ export default function ProductDetailCard({
       <RequestQuoteModal
         isOpen={quoteOpen}
         onClose={() => setQuoteOpen(false)}
-        productName={title}
+        productName={displayTitle}
       />
     </>
   );
