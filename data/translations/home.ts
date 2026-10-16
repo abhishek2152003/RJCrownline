@@ -38,7 +38,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       companyName: "RJCROWNLINE",
       p1Founder: "Mrs Jyoti Sangdore",
       p1Text:
-        "is the founder of RJCROWNLINE. We offer premium agri-commodities, dry fruits, and spices for export. We have a robust, high-reach network with farmers in Maharashtra and all over India.",
+        "We offer premium agri-commodities, dry fruits, and spices for export. We have a robust, high-reach network with farmers in Maharashtra and all over India.",
       p2Text:
         "In a market with increasing demand, one needs to look for a reliable provider who will match all your needs in a satisfactory manner. We at RJCROWNLINE are catering to exactly the same, and are thus earning a prominent position in the market.",
       highlightQuote: "We provide complete export solutions for Exporters.",
@@ -115,7 +115,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       companyName: "RJCROWNLINE मध्ये",
       p1Founder: "सौ. ज्योती सांगडोरे",
       p1Text:
-        "ह्या RJCROWNLINE च्या संस्थापक आहेत. आम्ही जगभरात निर्यातीसाठी उच्च दर्जाची कृषी उत्पादने, सुका मेवा आणि मसाले पुरवतो. आमचे महाराष्ट्र आणि संपूर्ण भारतातील शेतकऱ्यांशी थेट व मजबूत संबंध आहेत.",
+        "आम्ही जगभरात निर्यातीसाठी उच्च दर्जाची कृषी उत्पादने, सुका मेवा आणि मसाले पुरवतो. आमचे महाराष्ट्र आणि संपूर्ण भारतातील शेतकऱ्यांशी थेट व मजबूत संबंध आहेत.",
       p2Text:
         "वाढत्या बाजारपेठेत आपल्या सर्व गरजा विश्वासाने पूर्ण करणाऱ्या भागीदाराची गरज असते. RJCROWNLINE हीच विश्वासार्हता टिकवून आंतरराष्ट्रीय बाजारपेठेत अग्रगण्य स्थान मिळवत आहे.",
       highlightQuote: "आम्ही निर्यातदारांसाठी संपूर्ण निर्यात उपाय पुरवतो.",
@@ -192,7 +192,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       companyName: "RJCROWNLINE में",
       p1Founder: "श्रीमती ज्योति सांगडोरे",
       p1Text:
-        "RJCROWNLINE की संस्थापक हैं। हम वैश्विक निर्यात के लिए प्रीमियम कृषि जिंसों, सूखे मेवों और मसालों की आपूर्ति करते हैं। हमारा महाराष्ट्र और पूरे भारत के किसानों के साथ मजबूत नेटवर्क है।",
+        "हम वैश्विक निर्यात के लिए प्रीमियम कृषि जिंसों, सूखे मेवों और मसालों की आपूर्ति करते हैं। हमारा महाराष्ट्र और पूरे भारत के किसानों के साथ मजबूत नेटवर्क है।",
       p2Text:
         "बढ़ती मांग के इस दौर में, एक ऐसे विश्वसनीय निर्यातक की आवश्यकता होती है जो आपकी सभी जरूरतों को पूरी संतुष्टि के साथ पूरा करे। RJCROWNLINE ठीक यही विश्वसनीयता प्रदान करती है।",
       highlightQuote: "हम निर्यातकों के लिए संपूर्ण निर्यात समाधान प्रदान करते हैं।",
@@ -259,7 +259,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       titlePrefix: "خوش آمدید",
       companyName: "RJCROWNLINE میں",
       p1Founder: "محترمہ جیوتی سانگڈورے",
-      p1Text: "RJCROWNLINE کی بانی ہیں۔ ہم پریمیم زرعی اجناس، خشک میوہ جات اور مصالحہ جات برآمد کرتے ہیں۔",
+      p1Text: "ہم پریمیم زرعی اجناس، خشک میوہ جات اور مصالحہ جات برآمد کرتے ہیں۔",
       p2Text: "بڑھتی ہوئی طلب کے ساتھ، ہم گاہکوں کے تمام تقاضوں کو کامیابی کے ساتھ پورا کرتے ہیں۔",
       highlightQuote: "ہم برآمد کنندگان کے لیے مکمل برآمدی حل فراہم کرتے ہیں۔",
       trustedTitle: "قابل اعتماد",
@@ -318,7 +318,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       titlePrefix: "Willkommen bei",
       companyName: "RJCROWNLINE",
       p1Founder: "Frau Jyoti Sangdore",
-      p1Text: "ist die Gründerin von RJCROWNLINE. Wir exportieren erstklassige Agrarrohstoffe, Trockenfrüchte und Gewürze mit einem starken Netzwerk zu indischen Erzeugern.",
+      p1Text: "Wir exportieren erstklassige Agrarrohstoffe, Trockenfrüchte und Gewürze mit einem starken Netzwerk zu indischen Erzeugern.",
       p2Text: "In einem wachsenden Markt bieten wir zuverlässige und maßgeschneiderte Exportlösungen.",
       highlightQuote: "Wir bieten komplette Exportlösungen für globale Partner.",
       trustedTitle: "Zuverlässig",
@@ -377,7 +377,7 @@ export const homeTranslations: Record<LanguageCode, HomeTranslations> = {
       titlePrefix: "Добро пожаловать в",
       companyName: "RJCROWNLINE",
       p1Founder: "Г-жа Джиоти Сангдоре",
-      p1Text: "основатель компании RJCROWNLINE. Мы поставляем высококачественную сельхозпродукцию, сухофрукты и специи на мировой рынок.",
+      p1Text: "Мы поставляем высококачественную сельхозпродукцию, сухофрукты и специи на мировой рынок.",
       p2Text: "Мы гарантируем надежность, соответствие международным стандартам и индивидуальный подход.",
       highlightQuote: "Мы предоставляем комплексные решения для международных экспортеров.",
       trustedTitle: "Надежные",

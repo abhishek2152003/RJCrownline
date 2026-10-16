@@ -43,14 +43,15 @@ export default function WelcomeSection() {
 
             <h2 className="about-reveal about-item-2 font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-6 leading-tight">
               {t("home.welcome.titlePrefix")} <br />
-              <span className="text-industrial-blue">{t("home.welcome.companyName")}</span>
+              <span className="text-industrial-blue">
+                {t("home.welcome.companyName")}
+              </span>
             </h2>
 
             <div className="about-reveal about-item-3 w-20 h-1.5 bg-spice-gold rounded-full mb-8"></div>
 
             <div className="space-y-6 text-charcoal text-lg leading-relaxed">
               <p className="about-reveal about-item-3">
-                <strong>{t("home.welcome.p1Founder")} </strong>
                 {t("home.welcome.p1Text")}
               </p>
 
