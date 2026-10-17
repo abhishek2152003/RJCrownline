@@ -14,6 +14,8 @@ export default function ContactUs() {
     message: "",
   });
 
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -22,27 +24,43 @@ export default function ContactUs() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("submitting");
 
-    const { firstName, lastName, email, phone, message } = formData;
-    const subject = encodeURIComponent(
-      `New Contact Request from ${firstName} ${lastName}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
-    );
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/exim@rjcrownline.info", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          _replyto: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          _subject: `New Contact Request from ${formData.firstName} ${formData.lastName}`.trim(),
+          _template: "table",
+        }),
+      });
 
-    // Open the default email client
-    window.location.href = `mailto:info@globalspiceexports.com?subject=${subject}&body=${body}`;
-
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -324,24 +342,55 @@ export default function ContactUs() {
                   </label>
                 </div>
 
+                {status === "success" && (
+                  <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center space-x-2">
+                    <svg className="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Thank you! Your message has been sent successfully. We will get back to you shortly.</span>
+                  </div>
+                )}
+
+                {status === "error" && (
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm flex items-center space-x-2">
+                    <svg className="w-5 h-5 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Something went wrong while sending your message. Please try again or reach out directly at exim@rjcrownline.info.</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-industrial-blue hover:bg-ocean-blue text-white font-bold text-xl py-5 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(22,78,112,0.39)] hover:shadow-[0_6px_20px_rgba(40,120,168,0.3)] flex justify-center items-center group mt-12"
+                  disabled={status === "submitting"}
+                  className="w-full bg-industrial-blue hover:bg-ocean-blue disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold text-xl py-5 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_4px_14px_0_rgba(22,78,112,0.39)] hover:shadow-[0_6px_20px_rgba(40,120,168,0.3)] flex justify-center items-center group mt-12"
                 >
-                  {t("contact.sendButton")}
-                  <svg
-                    className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  {status === "submitting" ? (
+                    <>
+                      <span>Sending...</span>
+                      <svg className="animate-spin ml-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      {t("contact.sendButton")}
+                      <svg
+                        className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             </div>
